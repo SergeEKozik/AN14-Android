@@ -1,4 +1,4 @@
-package AKutsenkou;
+package akutsenkou;
 
 public class Test {
     public static void main(String[] args) {
