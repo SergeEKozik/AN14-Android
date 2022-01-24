@@ -1,6 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello Java Start");
+        int i = 257;
+        byte b = (byte) i;
+        System.out.println(b);
     }
 }
