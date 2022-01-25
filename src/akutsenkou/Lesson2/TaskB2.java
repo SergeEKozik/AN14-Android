@@ -1,5 +1,5 @@
 package akutsenkou.Lesson2;
-
+// Дискриминант
 import java.util.Scanner;
 
 public class TaskB2 {
