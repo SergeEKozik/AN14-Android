@@ -2,6 +2,7 @@ package akutsenkou;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println("Hello");
+        double c = 5/2;
+        System.out.println(c);
     }
 }

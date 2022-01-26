@@ -17,8 +17,8 @@ public class Task7 {
         int numberOfDev;
         System.out.print("Введите количество программистов: ");
         numberOfDev = sc.nextInt();
-        if(numberOfDev == 1 || numberOfDev%10 == 1) System.out.println(numberOfDev + " программист");
-            else if (numberOfDev == 2 || numberOfDev%10 == 2 || numberOfDev == 3 || numberOfDev%10 == 3 || numberOfDev == 4 || numberOfDev%10 == 4)
+        if(numberOfDev == 1 || numberOfDev%10 == 1 && numberOfDev%100 != 11) System.out.println(numberOfDev + " программист");
+            else if (numberOfDev == 2 || numberOfDev%10 == 2 && numberOfDev%100 != 12 || numberOfDev == 3 || numberOfDev%10 == 3 && numberOfDev%100 != 13 || numberOfDev == 4 || numberOfDev%10 == 4 && numberOfDev%100 != 14)
                 System.out.println(numberOfDev + " программиста");
                 else System.out.println(numberOfDev + " программистов");
 
