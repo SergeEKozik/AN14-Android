@@ -8,6 +8,7 @@ public class TaskB1 {
         int h = 0x111;
         float f = 111.111f;
 
+        System.out.println(d + b + o + h + f);
         System.out.println(d + " " + b + " " + o + " " + h + " " + f);
     }
 }
