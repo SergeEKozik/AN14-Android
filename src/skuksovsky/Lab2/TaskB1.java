@@ -2,7 +2,7 @@ package skuksovsky.Lab2;
 
 public class TaskB1 {
     public static void main(String[] args) {
-        int d = 111;
+        double d = 111.111;  // сделал double, чтобы int не повторялся
         byte b = 0b111;
         long o = 0111L;
         int h = 0x111;
