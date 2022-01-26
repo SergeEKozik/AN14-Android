@@ -5,14 +5,14 @@ package eveshtard.TaskAN2;
 //число однозначным, "двухзначным или трехзначным и более.
 
 public class Task1 {
+
     public static void main(String[] args) {
         int number = 285889522;
         int pos = positive(number);
         int length = String.valueOf(number * pos).length();
 
-        System.out.println("The count of the digits is");
-        System.out.println(length);
-        System.out.println(result(pos));
+        System.out.println("The count of the digits is " + length);
+        System.out.println("The number is " + result(pos));
     }
 
     private static int positive(int d) {
