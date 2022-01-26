@@ -2,7 +2,7 @@ package eveshtard.Lab2;
 
 import java.util.Scanner;
 
-public class TaskB1 {
+public class TaskB2 {
 
     public static void main(String[] args) {
         System.out.println("Введите три числа, используя клавишу \"ввод\", пожалуйста.");
