@@ -1,6 +1,6 @@
 package eveshtard.Lab2;
 
-public class TascA2 {
+public class TaskA2 {
     public static void main(String[] args) {
         System.out.println("Моё любимое стихотворение\n");
 
