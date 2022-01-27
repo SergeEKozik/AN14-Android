@@ -1,13 +1,12 @@
 package VNazarov.Lab02;
-import static java.lang.Integer.parseInt;
 public class TaskB1 {
     public static void main(String[] args) {
 
-        int d = parseInt ("111", 10);
-        byte e = (byte) 111;
-        long o = (long) 111;
-        int h = (int) 111.111;
-        float f = (float) 111.111;
+        int d = 111;
+        byte e = 0b111;
+        long o = 111L;
+        int h = 0x111;
+        float f = 111.111f;
 
         System.out.println(d + " " + e + " " + o + " " + h + " " + f);
     }
