@@ -1,6 +1,5 @@
 package vadim.sazonenko.Lab1;
 
-
 import java.util.Scanner;
 
 public class TaskA1 {
@@ -22,4 +21,3 @@ public class TaskA1 {
         System.out.println("Остаток: " + (double)ost);
     }
 }
-
