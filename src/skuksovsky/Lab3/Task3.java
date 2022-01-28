@@ -15,7 +15,7 @@ public class Task3 {
             if (i != spaceIndex) {
                 System.out.print(inputNumberArray[i]);
             } else {
-                System.out.print(spaceIndex != 0 ? " " + inputNumberArray[i] : inputNumberArray[i]); // вставляем ноль в нужном месте, исключение для нулевого индекса
+                System.out.print(spaceIndex != 0 ? " " + inputNumberArray[i] : inputNumberArray[i]); // вставляем пробел в нужном месте, исключение для нулевого индекса
                 spaceIndex +=3; // определяем следующий индекс, где должен быть вставлен пробел
             }
         }
