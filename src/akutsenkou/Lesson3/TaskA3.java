@@ -3,7 +3,6 @@ package akutsenkou.Lesson3;
 //Т.е. начиная справа каждые три позиции отделяются пробелом. Например число
 //20023143 должно быть выведено как 20 023 143
 
-import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class TaskA3 {
@@ -22,10 +21,6 @@ public class TaskA3 {
                 count += 3;
             }
         }
-
-        //NumberFormat f = NumberFormat.getInstance();
-        //int i = 12345678;
-       // System.out.println(f.format(i)); // 12 345 678
 
     }
 }
