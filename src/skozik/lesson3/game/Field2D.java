@@ -61,7 +61,11 @@ public class Field2D implements Field {
     }
 
     private void drawTopLine(int size) {
-        System.out.println("  012");
+        System.out.print("  ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(i);
+        }
+        System.out.println();
         System.out.print(" \u250C");
         for (int i = 0; i < size; i++) {
             System.out.print("\u2500");
@@ -94,7 +98,7 @@ public class Field2D implements Field {
             || (coordinates[0] > sizeX - 1)
             || (coordinates[1] < 0)
             || (coordinates[1] > sizeY - 1)) {
-            throw new RuntimeException("Coordinates are out of field size");
+            throw new RuntimeException(String.format("Coordinates %d %d are out of field size", coordinates[0], coordinates[1]));
         }
     }
 }
