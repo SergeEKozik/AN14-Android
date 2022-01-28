@@ -10,8 +10,8 @@ public class Task3 {
     public static void main(String[] args) {
         System.out.println("Enter number, please.");
         Scanner scanner = new Scanner(System.in);
-        int Number = scanner.nextInt();
-        System.out.println(zeroComparison(Number));
+        int number = scanner.nextInt();
+        System.out.println(zeroComparison(number));
     }
    
     private static int zeroComparison(int d) {
