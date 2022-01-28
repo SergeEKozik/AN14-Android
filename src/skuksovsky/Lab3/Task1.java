@@ -8,11 +8,11 @@ public class Task1 {
         int inputNumber = scanner.nextInt();
         scanner.close();
 
-        String[] numberArr = String.valueOf(inputNumber).split("");
+        String[] inputNumberArr = String.valueOf(inputNumber).split("");
         int counter = inputNumber >= 0 ? 0 : 1; // если введенное число отрицательное, то перебор элементов начать с элемента с индексом 1
         int totalSum = 0;
-        while(counter < numberArr.length){
-            totalSum += Integer.valueOf(numberArr[counter]);
+        while(counter < inputNumberArr.length){
+            totalSum += Integer.valueOf(inputNumberArr[counter]);
             counter++;
         }
 
