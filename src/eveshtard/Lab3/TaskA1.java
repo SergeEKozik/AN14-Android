@@ -1,5 +1,5 @@
 package eveshtard.Lab3;
-
+//1. Имеется целое число. Следует посчитать сумму цифр данного числа.
 import java.util.Scanner;
 
 public class TaskA1 {
