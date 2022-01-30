@@ -8,7 +8,11 @@ public class TaskB1 {
         System.out.println("Enter number, please.");
         Scanner scanner = new Scanner(System.in);
         int factorialOfNaturalNumber = scanner.nextInt();
-        System.out.println(factorial(factorialOfNaturalNumber));
+        if (factorialOfNaturalNumber < 0) {
+            System.out.println("Negative number");
+        } else {
+            System.out.println(factorial(factorialOfNaturalNumber));
+        }
     }
 
     private static int factorial(int nn) {
