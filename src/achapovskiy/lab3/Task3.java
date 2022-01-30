@@ -14,7 +14,7 @@ public class Task3 {
         int kol =0;
         String  str = "";
         for (int i = array.length-1; i != -1; i--) {
-            str = array[i];
+            str += array[i];
             kol +=1;
             if (kol==3){
                 str += " ";
