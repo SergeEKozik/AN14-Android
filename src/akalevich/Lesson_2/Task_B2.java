@@ -15,7 +15,6 @@ public class Task_B2 {
         int a = sc.nextInt();
         int b = sc.nextInt();
         int c = sc.nextInt();
-        System.out.println(dis(a,b,c));
         if (dis(a,b,c)>0) System.out.print(((b*(-1)+Math.sqrt(dis(a,b,c)))/2/a) + " " + ((b*(-1)-Math.sqrt(dis(a,b,c)))/2/a));
         if (dis(a,b,c)==0) System.out.print(b/2/a*(-1));
         if (dis(a,b,c)<0) System.out.print("Discriminant less then 0");

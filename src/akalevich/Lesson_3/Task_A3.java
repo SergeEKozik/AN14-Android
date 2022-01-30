@@ -2,10 +2,13 @@ package akalevich.Lesson_3;
 
 import java.util.Scanner;
 
-public class Task_A3 {
+public class Task_A3
+{
     public static void accountingOutput(int value)
     {
-        //20023143 должно быть выведено как 20 023 143
+        StringBuffer result = new StringBuffer("");
+        for(int index = 1;index<value;index*=1000) result.insert(0, value/index%1000+" ");
+        System.out.println(result);
     };
     public static void main(String[] args)
     {
