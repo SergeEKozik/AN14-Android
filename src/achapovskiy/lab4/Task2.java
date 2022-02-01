@@ -8,7 +8,7 @@ public class Task2 {
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите число строк");
         int num = Integer.parseInt(sc.nextLine()); // без этого сканер не даёт ввести последнюю строчку
-        String str[] = new String[num];
+        String str[] = new String[num],min;
         System.out.println("Введите строки");
         for (int i = 0; i < num; i++) {
             String stroka = sc.nextLine();
@@ -17,7 +17,7 @@ public class Task2 {
         for (int i = 0; i < num; i++) {
             for (int j = i + 1; j < num; j++) {
                 if (str[j].length() < str[i].length()) {
-                    String min = str[i];
+                    min = str[i];
                     str[i] = str[j];
                     str[j] = min;
                 }
