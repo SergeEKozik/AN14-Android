@@ -21,8 +21,6 @@ public class Task3var2 {
                 kol=1;
             }
         }
-
         System.out.print(str.trim());
-
     }
 }
