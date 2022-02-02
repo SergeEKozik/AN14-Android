@@ -1,18 +1,18 @@
 package eveshtard.Lab4;
-//Ввести n строк с консоли. Упорядочить и вывести строки в порядке возрастания (убывания) значений их длины.
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Task2 {
-
-    public static void main(String[] args) throws IOException {
-
+//Ввести n строк с консоли.
+// Вывести на консоль те строки, длина которых меньше (больше) средней, а также длину строки.
+public class Task3 {
+    public static void main(String[] args) throws IOException  {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Введите число строк:");
         int numberOfLines = Integer.parseInt(reader.readLine());
         String[] arrayString = new String[numberOfLines];
+
         for (int i = 0; i < arrayString.length; i++) {
             System.out.println("Введите строку номер " + (i + 1));
             String currentString = reader.readLine();
@@ -20,11 +20,12 @@ public class Task2 {
         }
         sortArray(arrayString);
 
-        for (int i = 0; i < arrayString.length; i++) {
-            System.out.println(arrayString[i]);
+        for (int i = 0; i < arrayString.length/2; i++) {
+            System.out.print(arrayString[i]);
+            System.out.print(" длинна ");
+            System.out.println(arrayString[i].length());
         }
     }
-
     //сортировка по возрастанию.
     private static void sortArray(String[] arrayString) {
         for (int i = 0; i < arrayString.length; i++) {
