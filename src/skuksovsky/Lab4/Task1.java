@@ -9,14 +9,14 @@ public class Task1 { // Если нужно хранить все введенн
         while (sc.hasNextLine()) {
             String inputString = sc.nextLine();
             if (!inputString.equals("end")) {
-                stringBuilder.append(inputString).append("/");
+                stringBuilder.append(inputString).append("SPLIT_HERE");
             } else {
                 sc.close();
                 break;
             }
         }
 
-        String[] totalStringsArray = stringBuilder.toString().split("/");
+        String[] totalStringsArray = stringBuilder.toString().split("SPLIT_HERE");
         int[] totalStringsLength = new int[totalStringsArray.length];
         for (int i = 0; i < totalStringsArray.length; i++) {
             totalStringsLength[i] = totalStringsArray[i].length();
