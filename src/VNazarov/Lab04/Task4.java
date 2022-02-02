@@ -1,5 +1,6 @@
 package VNazarov.Lab04;
 import java.util.Scanner;
+
 public class Task4 {
     public static void main(String[] args) {
 
@@ -38,10 +39,10 @@ public class Task4 {
         char[] chB = new char[b.length()];
         char[] chC = new char[c.length()];
         char[] chD = new char[d.length()];
-        a.getChars(1, a.length(), chA, 0); //Word A to char
-        b.getChars(1, b.length(), chB, 0); //Word B to char
-        c.getChars(1, c.length(), chC, 0); //Word C to char
-        d.getChars(1, d.length(), chD, 0); //Word D to char
+        a.getChars(0, a.length(), chA, 0); //Word A to char
+        b.getChars(0, b.length(), chB, 0); //Word B to char
+        c.getChars(0, c.length(), chC, 0); //Word C to char
+        d.getChars(0, d.length(), chD, 0); //Word D to char
 
         int countUniA = 1; //count unique symbols in word A
         for (int counter = 0; counter < chA.length; counter++) {
