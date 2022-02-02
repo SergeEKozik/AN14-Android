@@ -1,6 +1,6 @@
 package skuksovsky.Lab4;
 import java.util.*;
-public class Task1 {
+public class Task1 { // Если нужно хранить все введенные строки
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
