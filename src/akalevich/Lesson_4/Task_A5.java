@@ -1,6 +1,5 @@
 package akalevich.Lesson_4;
 
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -34,7 +33,7 @@ public class Task_A5
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter some words:");
         String inputStr = sc.nextLine();
-        String[] input = inputStr.toLowerCase().split(" ");
+        String[] input = inputStr.split(" ");
         findMinSymbolsWord(input);
     }
 }

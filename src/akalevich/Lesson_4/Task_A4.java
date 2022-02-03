@@ -1,44 +1,44 @@
 package akalevich.Lesson_4;
 
-import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Task_A4
 {
     public static void findMinSymbolsWord(String[] input)
     {
-        String minSymbolWord = null;
-        int minSymbols = 0;
         boolean firstCheck = true;
+        int minLength = 0;
+        String result = null;
         for (String index : input)
         {
+            StringBuilder strBuilder = new StringBuilder();
             char[] word = index.toCharArray();
-            ArrayList<Character> arrayList = new ArrayList<>();
-            for (char indexSymbol : word)
+            for (char letterIndex : word)
             {
-                    String ch = Character.toString(indexSymbol);
-                    if (!index.contains(ch)) arrayList.add(indexSymbol);
+                String strCheck = strBuilder.toString();
+                String letter = Character.toString(letterIndex);
+                if (!strCheck.contains(letter)) strBuilder.append(letter);
             }
             if (firstCheck == true)
             {
-                minSymbols = arrayList.size();
+                minLength = strBuilder.length();
+                result = index;
                 firstCheck = false;
             }
-            if (arrayList.size() <= minSymbols)
+            if (minLength > strBuilder.length())
             {
-                minSymbols = arrayList.size();
-                minSymbolWord = index;
+                minLength = strBuilder.length();
+                result = index;
             }
         }
-        System.out.println(minSymbolWord);
+        System.out.println(result);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter some words:");
         String inputStr = sc.nextLine();
-        inputStr = inputStr.toLowerCase(Locale.ROOT);
         String[] input = inputStr.split(" ");
         findMinSymbolsWord(input);
     }

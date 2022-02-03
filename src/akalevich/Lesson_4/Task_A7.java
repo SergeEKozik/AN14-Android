@@ -15,7 +15,7 @@ public class Task_A7
                 for (int letterNextIndex = 0; letterNextIndex < word.length; letterNextIndex++)
                 {
                     if (letterIndex == letterNextIndex) break;
-                    if ((int) word[letterIndex] != (int) word[letterNextIndex]) check = true;
+                    if (word[letterIndex] != word[letterNextIndex]) check = true;
                     else
                     {
                         check = false;
@@ -36,7 +36,7 @@ public class Task_A7
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter some words:");
         String inputStr = sc.nextLine();
-        String[] input = inputStr.toLowerCase().split(" ");
+        String[] input = inputStr.split(" ");
         findDifferentSymbolWord(input);
     }
 }
