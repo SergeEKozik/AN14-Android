@@ -14,20 +14,20 @@ public class Task_A4
         for (String index : input)
         {
             char[] word = index.toCharArray();
-            int difSym = 0;
-            for (int indexSymbol = 0; indexSymbol < word.length; indexSymbol++)
+            ArrayList<Character> arrayList = new ArrayList<>();
+            for (char indexSymbol : word)
             {
-                    String ch = Character.toString(word[indexSymbol]);
-                    if (index.contains(ch)) difSym++;
+                    String ch = Character.toString(indexSymbol);
+                    if (!index.contains(ch)) arrayList.add(indexSymbol);
             }
             if (firstCheck == true)
             {
-                minSymbols = difSym;
+                minSymbols = arrayList.size();
                 firstCheck = false;
             }
-            if (difSym <= minSymbols)
+            if (arrayList.size() <= minSymbols)
             {
-                minSymbols = difSym;
+                minSymbols = arrayList.size();
                 minSymbolWord = index;
             }
         }
