@@ -3,7 +3,4 @@ package eveshtard.Lab5.TaskA2;
 //Иерархия должна иметь хотя бы три уровня.
 
 public class Cards {
-
-
-
-    }
+}
