@@ -2,7 +2,7 @@ package eveshtard.Lab5.TaskA2;
 //A2. Создать иерархию классов, описывающих банковские карточки.
 //Иерархия должна иметь хотя бы три уровня.
 
-public class Kards {
+public class Cards {
 
 
 
