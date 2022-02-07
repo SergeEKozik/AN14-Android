@@ -7,7 +7,6 @@ public class Transport {
     private String color;
     private byte[] coordinate;
 
-
     public Transport(double fuel, int speed, String color,byte [] coordinate) {   //конструктор
         setValues(fuel,speed, color, coordinate);
         //System.out.println(getValues());
