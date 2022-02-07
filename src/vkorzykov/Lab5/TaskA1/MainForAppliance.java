@@ -1,6 +1,6 @@
 package vkorzykov.Lab5.TaskA1;
 
-public class Main {
+public class MainForAppliance {
     public static void main(String[] args) {
         //A1.Создать иерархию классов, описывающих бытовую технику. Создать
         //несколько объектов описанных классов, часть из них включить в розетку.
