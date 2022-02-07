@@ -19,7 +19,7 @@ public class Task4 {
                 }
             }
             rezSTR += letter + " ";                             //собираю из "множеств букв слов" строку
-            //System.out.println(rezSTR);                       //new sundaytr golp or are to
+            System.out.println(rezSTR);                       //new sundaytr golp or are to
         }
         String[] resWORDS = rezSTR.split(" ");            //вношу строку множеств в массив разбив по пробельному символу на слова
         int min = resWORDS[0].length(), indexMIN = 0;

@@ -12,12 +12,12 @@ public class Money {
     public Money(long rubleFirst, long pennyFirst, long rubleSecond, long pennySecond) {
         System.out.println("Производимые операции : ");
         Set(rubleFirst, pennyFirst, rubleSecond, pennySecond);
-        System.out.println(getSum());
+        /*System.out.println(getSum());
         System.out.println(getDif());
         System.out.println(getDiv());
         System.out.println(getDivSum());
         System.out.println(getMult());
-        System.out.println(comparison());
+        System.out.println(comparison());*/
 
     }
 
