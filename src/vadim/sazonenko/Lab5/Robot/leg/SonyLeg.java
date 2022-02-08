@@ -1,6 +1,6 @@
 package vadim.sazonenko.Lab5.Robot.leg;
 
-public class SonyLeg implements Ileg{
+public class SonyLeg implements Ileg {
     private int price;
 
    public SonyLeg (int price) {
