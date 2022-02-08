@@ -1,4 +1,4 @@
-package akalevich.Lesson_5.Task_A1.Classes;
+package akalevich.Lesson_5.Task_A1.services;
 
 abstract class TV extends LoungeApps {
 

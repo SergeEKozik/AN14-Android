@@ -1,4 +1,4 @@
-package akalevich.Lesson_5.Task_A1.Classes;
+package akalevich.Lesson_5.Task_A1.services;
 
 public class PanasonicTV extends  TV{
     public PanasonicTV(String name, boolean remoteControllerExist) {
