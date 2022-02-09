@@ -41,8 +41,5 @@ public class Run {
         System.out.println("Самый дорогой робот: " + expensiveRobot + ", стоимость которого " + expensive + "$");
 
 
-
-
-
     }
 }

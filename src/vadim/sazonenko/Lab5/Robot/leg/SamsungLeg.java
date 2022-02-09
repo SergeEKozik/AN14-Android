@@ -1,9 +1,9 @@
 package vadim.sazonenko.Lab5.Robot.leg;
 
-public class SamsungLeg implements Ileg{
+public class SamsungLeg implements Ileg {
     private int price;
 
-   public SamsungLeg (int price) {
+    public SamsungLeg(int price) {
         this.price = price;
     }
 
@@ -12,7 +12,7 @@ public class SamsungLeg implements Ileg{
         return price;
     }
 
-    public  void StepLeg(){
+    public void StepLeg() {
         System.out.println("Нога Samsung делает шаг");
     }
 }

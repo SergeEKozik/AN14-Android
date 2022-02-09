@@ -1,9 +1,9 @@
 package vadim.sazonenko.Lab5.Robot.hand;
 
-public class SonyHand implements Ihand{
+public class SonyHand implements Ihand {
     private int price;
 
-    public SonyHand (int price) {
+    public SonyHand(int price) {
         this.price = price;
     }
 
@@ -12,7 +12,7 @@ public class SonyHand implements Ihand{
         return price;
     }
 
-    public  void UpHand(){
+    public void UpHand() {
         System.out.println("Рука Sony поднимается");
     }
 }

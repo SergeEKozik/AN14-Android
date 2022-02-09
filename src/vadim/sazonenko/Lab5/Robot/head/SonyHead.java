@@ -4,7 +4,7 @@ public class SonyHead implements Ihead {
 
     private int price;
 
-    public SonyHead (int price) {
+    public SonyHead(int price) {
         this.price = price;
     }
 
@@ -13,7 +13,7 @@ public class SonyHead implements Ihead {
         return price;
     }
 
-    public  void speek(){
+    public void speek() {
         System.out.println("Голова Sony говорит");
     }
 }

@@ -4,7 +4,7 @@ public class SamsungHead implements Ihead {
 
     private int price;
 
-   public SamsungHead (int price) {
+    public SamsungHead(int price) {
         this.price = price;
     }
 
@@ -13,7 +13,7 @@ public class SamsungHead implements Ihead {
         return price;
     }
 
-    public  void speek(){
+    public void speek() {
         System.out.println("Голова Samsung говорит");
     }
 }

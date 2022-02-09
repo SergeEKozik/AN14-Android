@@ -1,9 +1,9 @@
 package vadim.sazonenko.Lab5.Robot.hand;
 
-public class ToshibaHand implements Ihand{
+public class ToshibaHand implements Ihand {
     private int price;
 
-  public ToshibaHand (int price) {
+    public ToshibaHand(int price) {
         this.price = price;
     }
 
@@ -12,7 +12,7 @@ public class ToshibaHand implements Ihand{
         return price;
     }
 
-    public  void UpHand(){
+    public void UpHand() {
         System.out.println("Рука Toshiba поднимается");
     }
 }

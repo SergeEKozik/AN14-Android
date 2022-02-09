@@ -1,9 +1,9 @@
 package vadim.sazonenko.Lab5.Robot.head;
 
-public class ToshibaHead implements Ihead{
+public class ToshibaHead implements Ihead {
     private int price;
 
-     public ToshibaHead (int price) {
+    public ToshibaHead(int price) {
         this.price = price;
     }
 
@@ -12,7 +12,7 @@ public class ToshibaHead implements Ihead{
         return price;
     }
 
-    public  void speek(){
+    public void speek() {
         System.out.println("Голова Toshiba говорит");
     }
 }

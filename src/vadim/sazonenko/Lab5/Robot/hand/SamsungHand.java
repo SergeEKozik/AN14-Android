@@ -1,9 +1,9 @@
 package vadim.sazonenko.Lab5.Robot.hand;
 
-public class SamsungHand implements Ihand{
+public class SamsungHand implements Ihand {
     private int price;
 
-   public SamsungHand (int price) {
+    public SamsungHand(int price) {
         this.price = price;
     }
 
@@ -13,7 +13,7 @@ public class SamsungHand implements Ihand{
         return price;
     }
 
-    public  void UpHand(){
+    public void UpHand() {
         System.out.println("Рука Samsung поднимается");
     }
 }

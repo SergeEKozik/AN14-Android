@@ -1,9 +1,9 @@
 package vadim.sazonenko.Lab5.Robot.leg;
 
-public class ToshibaLeg implements Ileg{
+public class ToshibaLeg implements Ileg {
     private int price;
 
-   public ToshibaLeg (int price) {
+    public ToshibaLeg(int price) {
         this.price = price;
     }
 
@@ -12,7 +12,7 @@ public class ToshibaLeg implements Ileg{
         return price;
     }
 
-    public  void StepLeg(){
+    public void StepLeg() {
         System.out.println("Нога Toshiba делает шаг");
     }
 }
