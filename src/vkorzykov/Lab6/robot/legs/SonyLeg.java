@@ -1,9 +1,9 @@
-package vkorzykov.ROBOT.robot.legs;
+package vkorzykov.Lab6.robot.legs;
 
-public class ToshibaLeg implements ILeg {
+public class SonyLeg implements ILeg {
     private int price;
 
-    public ToshibaLeg(int price){
+    public SonyLeg(int price){
         this.price = price;
     }
     public void step(){

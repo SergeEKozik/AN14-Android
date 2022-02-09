@@ -1,15 +1,13 @@
-package vkorzykov.ROBOT.robot;
+package vkorzykov.Lab6.robot;
 
-import vkorzykov.ROBOT.robot.hands.SamsungHand;
-import vkorzykov.ROBOT.robot.hands.SonyHand;
-import vkorzykov.ROBOT.robot.hands.ToshibaHand;
-import vkorzykov.ROBOT.robot.heads.SonyHead;
-import vkorzykov.ROBOT.robot.heads.ToshibaHead;
-import vkorzykov.ROBOT.robot.legs.SamsungLeg;
-import vkorzykov.ROBOT.robot.legs.SonyLeg;
-import vkorzykov.ROBOT.robot.legs.ToshibaLeg;
-
-import java.util.ArrayList;
+import vkorzykov.Lab6.robot.hands.SamsungHand;
+import vkorzykov.Lab6.robot.hands.SonyHand;
+import vkorzykov.Lab6.robot.hands.ToshibaHand;
+import vkorzykov.Lab6.robot.heads.SonyHead;
+import vkorzykov.Lab6.robot.heads.ToshibaHead;
+import vkorzykov.Lab6.robot.legs.SamsungLeg;
+import vkorzykov.Lab6.robot.legs.SonyLeg;
+import vkorzykov.Lab6.robot.legs.ToshibaLeg;
 
 public class Run {
     public static void main(String[] args) {
@@ -20,6 +18,9 @@ public class Run {
         String nameRobotTest1 = "robotTest1";
         String nameRobotTest2 = "robotTest2";
         String nameRobotTest3 = "robotTest3";
+        robotTest1.action();
+        robotTest2.action();
+        robotTest3.action();
         System.out.println(robotTest1.getPrice());
         System.out.println(robotTest2.getPrice());
         System.out.println(robotTest3.getPrice());

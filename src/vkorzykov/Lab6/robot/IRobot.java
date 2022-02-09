@@ -1,4 +1,4 @@
-package vkorzykov.ROBOT.robot;
+package vkorzykov.Lab6.robot;
 
 public interface IRobot {
 

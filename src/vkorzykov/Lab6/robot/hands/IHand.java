@@ -1,4 +1,4 @@
-package vkorzykov.ROBOT.robot.hands;
+package vkorzykov.Lab6.robot.hands;
 
 public interface IHand {
     void upHand();

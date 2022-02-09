@@ -1,4 +1,4 @@
-package vkorzykov.ROBOT.robot.legs;
+package vkorzykov.Lab6.robot.legs;
 
 public class SamsungLeg implements ILeg {
     private int price;

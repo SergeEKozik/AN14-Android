@@ -1,8 +1,8 @@
-package vkorzykov.ROBOT.robot;
+package vkorzykov.Lab6.robot;
 
-import vkorzykov.ROBOT.robot.heads.IHead;
-import vkorzykov.ROBOT.robot.legs.ILeg;
-import vkorzykov.ROBOT.robot.hands.IHand;
+import vkorzykov.Lab6.robot.hands.IHand;
+import vkorzykov.Lab6.robot.heads.IHead;
+import vkorzykov.Lab6.robot.legs.ILeg;
 
 public class Robot implements IRobot {
     private IHead head;

@@ -1,4 +1,4 @@
-package vkorzykov.ROBOT.robot.heads;
+package vkorzykov.Lab6.robot.heads;
 
 public class SonyHead implements IHead {
     private int price;
