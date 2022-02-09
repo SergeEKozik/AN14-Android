@@ -1,7 +1,7 @@
 package akalevich.Lesson_5.Task_A1;
 
-import akalevich.Lesson_5.Task_A1.Classes.PanasonicTV;
-import akalevich.Lesson_5.Task_A1.Classes.SonyTV;
+import akalevich.Lesson_5.Task_A1.services.PanasonicTV;
+import akalevich.Lesson_5.Task_A1.services.SonyTV;
 
 public class MainApp {
 
