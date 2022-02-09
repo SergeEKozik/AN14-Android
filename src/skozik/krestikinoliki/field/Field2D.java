@@ -7,6 +7,9 @@
 
 package skozik.krestikinoliki.field;
 
+import static skozik.krestikinoliki.common.KrestikiNolikiConstants.LOG_FIELD_COORDINATE_EXCEEDS_DIMENSIONS;
+import static skozik.krestikinoliki.common.KrestikiNolikiConstants.LOG_FIELD_COORDINATE_EXCEEDS_SIZE;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -106,14 +109,14 @@ public class Field2D implements IField {
 
     protected void validateCoordinates(int[] coordinates) {
         if ((coordinates == null) || (coordinates.length != 2)) {
-            throw new RuntimeException("Coordinates are not equal to field dimensions");
+            throw new RuntimeException(LOG_FIELD_COORDINATE_EXCEEDS_DIMENSIONS);
         }
         if ((coordinates[0] < 0)
             || (coordinates[0] > sizeX - 1)
             || (coordinates[1] < 0)
             || (coordinates[1] > sizeY - 1)) {
             throw new RuntimeException(
-                String.format("Coordinates %d %d are out of field size", coordinates[0], coordinates[1]));
+                String.format(LOG_FIELD_COORDINATE_EXCEEDS_SIZE, coordinates[0], coordinates[1]));
         }
     }
 }

@@ -6,6 +6,8 @@
 
 package skozik.krestikinoliki.renderer;
 
+import static skozik.krestikinoliki.common.KrestikiNolikiConstants.*;
+
 import java.util.Scanner;
 
 import skozik.krestikinoliki.gamer.IGamer;
@@ -16,9 +18,9 @@ public class ConsoleRenderer implements IRenderer {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    private int placesPerSymbol = 0;
-    private String digitsPerSymbolFormat; //example: "%7d";
-    private String symbolPerSymbolFormat; //example: "%7s";
+    private int placesPerSymbol;
+    private String digitsPerSymbolFormat;
+    private String symbolPerSymbolFormat;
 
     public ConsoleRenderer(int placesPerSymbol) {
         this.placesPerSymbol = placesPerSymbol;
@@ -32,38 +34,38 @@ public class ConsoleRenderer implements IRenderer {
         if (field instanceof Field2D) {
             this.draw2D((Field2D) field);
         } else {
-            throw new RuntimeException("Unsupported type of field.");
+            throw new RuntimeException(LOG_FIELD_CAST_ERROR);
         }
     }
 
     @Override
     public void warnGameHalt() {
-        System.out.println("Игра прервана");
+        System.out.println(CONSOLE_MSG_GAME_HALTED);
     }
 
     @Override
     public void warnGamerWon(IGamer gamer) {
-        System.out.printf("Игрок %s победил!%n", gamer.getName());
+        System.out.printf(CONSOLE_MSG_PLAYER_WON, gamer.getName());
     }
 
     @Override
     public void warnGamerTurn(IGamer gamer) {
-        System.out.printf("Ходит игрок %s:%n", gamer.getName());
+        System.out.printf(CONSOLE_MSG_PLAYER_TURN, gamer.getName());
     }
 
     @Override
     public void warnGamerTurnAgain(IGamer gamer) {
-        System.out.printf("Игрок %s вводит координаты заново:%n", gamer.getName());
+        System.out.printf(CONSOLE_MSG_PLAYER_TURN_AGAIN, gamer.getName());
     }
 
     @Override
     public void warnPositionUsed(int[] coordinates) {
-        System.out.printf("Клетка (%d, %d) уже занята.%n", coordinates[0], coordinates[1]);
+        System.out.printf(CONSOLE_MSG_POSITION_USED, coordinates[0], coordinates[1]);
     }
 
     @Override
     public void warnNoTurnsLeft() {
-        System.out.println("Всё поле заполнено.");
+        System.out.println(CONSOLE_MSG_NO_FREE_POSITIONS);
     }
 
     /**
@@ -93,34 +95,33 @@ public class ConsoleRenderer implements IRenderer {
         System.out.print("  ");
         for (int i = 0; i < sizeY; i++) {
             System.out.printf(digitsPerSymbolFormat, i);
-            System.out.print(" ");
         }
         System.out.println();
-        System.out.print(" \u250C");
+        System.out.print(" " + TOP_LEFT_CORNER);
         for (int i = 0; i < sizeY; i++) {
             for (int k = 0; k < placesPerSymbol; k++) {
-                System.out.print("\u2500");
+                System.out.print(HORIZONTAL_LINE);
             }
         }
-        System.out.println("\u2510");
+        System.out.println(TOP_RIGHT_CORNER);
     }
 
     private void drawBottomLine(int sizeY) {
-        System.out.print(" \u2514");
+        System.out.print(" " + BOTTOM_LEFT_CORNER);
         for (int i = 0; i < sizeY; i++) {
             for (int k = 0; k < placesPerSymbol; k++) {
-                System.out.print("\u2500");
+                System.out.print(HORIZONTAL_LINE);
             }
         }
-        System.out.println("\u2519");
+        System.out.println(BOTTOM_RIGHT_CORNER);
     }
 
     private void drawMiddleLine(int lineNumber, int sizeY, Field2D field) {
         System.out.print(lineNumber);
-        System.out.print("\u2502");
+        System.out.print(VERTICAL_LINE);
         for (int j = 0; j < sizeY; j++) {
             System.out.printf(symbolPerSymbolFormat, field.getSymbol(new int[]{lineNumber, j}));
         }
-        System.out.println("\u2502");
+        System.out.println(VERTICAL_LINE);
     }
 }

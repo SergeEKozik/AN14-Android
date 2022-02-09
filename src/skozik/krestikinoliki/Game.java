@@ -7,6 +7,8 @@
 
 package skozik.krestikinoliki;
 
+import static skozik.krestikinoliki.common.KrestikiNolikiConstants.*;
+
 import skozik.krestikinoliki.field.Field2D;
 import skozik.krestikinoliki.field.IField;
 import skozik.krestikinoliki.gamer.Gamer;
@@ -19,28 +21,13 @@ import skozik.krestikinoliki.renderer.IRenderer;
 
 public class Game {
 
-    private static final char DEFAULT_SYMBOL = '-';
-    private static final char PLAYER1_SYMBOL = 'X';
-    private static final char PLAYER2_SYMBOL = '0';
-
-    private static IRenderer renderer = new ConsoleRenderer(8);
-    private static IIntelligence intelligence = new Intelligence2D(5);
+    private static IRenderer renderer = new ConsoleRenderer(PLACES_PER_SYMBOL);
+    private static IIntelligence intelligence = new Intelligence2D(MAX_FORECAST_LEVEL);
 
     public static void main(String[] args) {
-        IField field = new Field2D(DEFAULT_SYMBOL, 3, 3);
-        startGameWithAI(field);
-//        startGameWithHuman(field);
-    }
-
-    private static void startGameWithAI(IField field) {
-        IGamer gamer1 = new Gamer(PLAYER1_SYMBOL, "Gamer 1");
-        IGamer gamer2 = new GamerAI(PLAYER2_SYMBOL, "Gamer 2");
-        startGame(gamer1, gamer2, field);
-    }
-
-    private static void startGameWithHuman(IField field) {
-        IGamer gamer1 = new Gamer(PLAYER1_SYMBOL, "Gamer 1");
-        IGamer gamer2 = new Gamer(PLAYER2_SYMBOL, "Gamer 2");
+        IField field = new Field2D(DEFAULT_SYMBOL, SIZE_X, SIZE_Y);
+        IGamer gamer1 = new Gamer(PLAYER1_SYMBOL, PLAYER_1_DEFAULT_NAME);
+        IGamer gamer2 = new GamerAI(PLAYER2_SYMBOL, PLAYER_2_DEFAULT_NAME);
         startGame(gamer1, gamer2, field);
     }
 
@@ -69,23 +56,29 @@ public class Game {
 
     private static boolean askForTurn(IGamer gamer, IField field, IGamer enemy) {
         renderer.warnGamerTurn(gamer);
-        if (gamer instanceof GamerAI) {
-            int[] coordinates = intelligence.forecastNextStep(field, gamer, enemy);
-            if (!field.setSymbol(gamer.getSymbol(), coordinates)) {
-                throw new RuntimeException(
-                    String.format("Ошибка искусственного интеллекта в точке (%d, %d)", coordinates[0], coordinates[1]));
+        return (gamer instanceof GamerAI) ?
+            askForTurnAI(gamer, field, enemy)
+            : askForTurnHuman(gamer, field, enemy);
+    }
+
+    private static boolean askForTurnAI(IGamer gamer, IField field, IGamer enemy) {
+        int[] coordinates = intelligence.forecastNextStep(field, gamer, enemy);
+        if (!field.setSymbol(gamer.getSymbol(), coordinates)) {
+            throw new RuntimeException(
+                String.format(LOG_MESSAGE_AI_TURN_ERROR, coordinates[0], coordinates[1]));
+        }
+        return true;
+    }
+
+    private static boolean askForTurnHuman(IGamer gamer, IField field, IGamer enemy) {
+        int[] userInput = renderer.askGamerForCoordinates();
+        while (userInput.length > 0) {
+            if (field.setSymbol(gamer.getSymbol(), userInput)) {
+                return true;
             }
-            return true;
-        } else {
-            int[] userInput = renderer.askGamerForCoordinates();
-            while (userInput.length > 0) {
-                if (field.setSymbol(gamer.getSymbol(), userInput)) {
-                    return true;
-                }
-                renderer.warnPositionUsed(userInput);
-                renderer.warnGamerTurnAgain(gamer);
-                userInput = renderer.askGamerForCoordinates();
-            }
+            renderer.warnPositionUsed(userInput);
+            renderer.warnGamerTurnAgain(gamer);
+            userInput = renderer.askGamerForCoordinates();
         }
         return false;
     }
