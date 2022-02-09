@@ -1,4 +1,4 @@
-package vkorzykov.Lab5.TaskA2;
+package vkorzykov.Lab5.GameTeslaGo;
 
 class FreightCar extends Car {
     int weightCar;

@@ -1,9 +1,9 @@
-package vkorzykov.Lab5.TaskA2;
+package vkorzykov.Lab5.GameTeslaGo;
 
 
 public class RUN {
     public static void main(String[] args) {
-        ElectricCar tesla = new ElectricCar("Tesla", 2016, "Black", "sedan", 0);
+        ElectricCar tesla = new ElectricCar("Tesla", 2016, "Black", "sedan");
         System.out.println(tesla);
         System.out.println("");
         //нельзя ничего менять сверху
@@ -37,11 +37,8 @@ public class RUN {
 
 
 
-
-
-
-        // нельзя ничего менять снизу
-        //tesla.check(); // Убрать "//" перед методом check - если хотите ЧЕКАТЬ ЗАРЯДНЫЕ СТАНЦИИ на вашем Километре автоматически
+        //tesla.check(); // Убрать "//" перед методом check - если хотите ЧЕКАТЬ наличие ЗАРЯДНОЙ СТАНЦИИ на вашем Километре автоматически
+        // нельзя ничего менять снизу - Это Информация о статусе ТЕСЛЫ и цели.
         System.out.println("");
         tesla.changeColor("Цвет ПОБЕДИТЕЛЯ");
         System.out.println(tesla);

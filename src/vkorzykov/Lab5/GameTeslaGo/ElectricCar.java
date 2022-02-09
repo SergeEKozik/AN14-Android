@@ -1,17 +1,16 @@
-package vkorzykov.Lab5.TaskA2;
+package vkorzykov.Lab5.GameTeslaGo;
 
 public class ElectricCar extends PassengerCar {
     private String typeOfEngine = "Electric";
-    private int batteryCharge;
+    private int batteryCharge = 0;
     private boolean readyToDrive;
     private int distance = 0;
     private double chargingTime = 0;
     private boolean charge;
 
-    public ElectricCar(String modelName, int earOfProduction, String color, String bodyType, int batteryCharge) {
+    public ElectricCar(String modelName, int earOfProduction, String color, String bodyType) {
         super(modelName, earOfProduction, color, bodyType);
-        this.batteryCharge = batteryCharge;
-        readyToDrive = false;
+
 
     }
 
