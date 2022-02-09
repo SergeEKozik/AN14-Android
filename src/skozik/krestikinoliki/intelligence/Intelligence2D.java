@@ -122,8 +122,16 @@ public class Intelligence2D implements IIntelligence {
         return new int[]{enemyTurn.x, enemyTurn.y};
     }
 
+    /**
+     *
+     * @param field is object containing array of that represents game field
+     * @param sizeX is 1st dimension of field array
+     * @param sizeY is 2nd dimension of field array
+     * @param victoriesTurns array of VictoriesTurns objects for each point of field
+     * @return VictoriesTurns object which represents current player move with maximum variants of wins at the closest turn.
+     */
     private VictoriesTurns chooseClosestWin(IField field, int sizeX, int sizeY, VictoriesTurns[][] victoriesTurns) {
-        List<VictoriesTurns> enemyDangerousTurns = new ArrayList<>();
+        List<VictoriesTurns> closestWinTurns = new ArrayList<>();
         int nearestTurn = this.maxForecastedLevel;
         int maxWin = 0;
         for (int i = 0; i < sizeX; i++) {
@@ -139,11 +147,11 @@ public class Intelligence2D implements IIntelligence {
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
                 if ((victoriesTurns[i][j].turn == nearestTurn) && (victoriesTurns[i][j].victories == maxWin)) {
-                    enemyDangerousTurns.add(victoriesTurns[i][j]);
+                    closestWinTurns.add(victoriesTurns[i][j]);
                 }
             }
         }
-        if (enemyDangerousTurns.isEmpty()) {
+        if (closestWinTurns.isEmpty()) {
             int[][] emptyCoordinates = field.getEmptyCoordinates();
             if (emptyCoordinates.length <= 0) {
                 throw new RuntimeException("No available space for AI turn!");
@@ -151,7 +159,7 @@ public class Intelligence2D implements IIntelligence {
             int[] coor = emptyCoordinates[RANDOM.nextInt(emptyCoordinates.length)];
             return new VictoriesTurns(this.maxForecastedLevel, 0, coor[0], coor[1]);
         }
-        return enemyDangerousTurns.get(RANDOM.nextInt(enemyDangerousTurns.size()));
+        return closestWinTurns.get(RANDOM.nextInt(closestWinTurns.size()));
     }
 
     private VictoriesTurns calculateVictories(Map<Character, Map<Integer, Integer>> victories, Character symbol, int x, int y) {
