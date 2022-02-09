@@ -19,6 +19,5 @@ public class Main {
         //String resDif = money.getDif();
         //System.out.println(resDif);
 
-
     }
 }
