@@ -10,6 +10,7 @@ import static skozik.krestikinoliki.common.KrestikiNolikiConstants.*;
 
 import java.util.Scanner;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.gamer.IGamer;
 import skozik.krestikinoliki.field.Field2D;
 import skozik.krestikinoliki.field.IField;
@@ -22,19 +23,24 @@ public class ConsoleRenderer implements IRenderer {
     private String digitsPerSymbolFormat;
     private String symbolPerSymbolFormat;
 
+    public ConsoleRenderer() {
+        this.placesPerSymbol = PLACES_PER_SYMBOL;
+        this.digitsPerSymbolFormat = "%" + this.placesPerSymbol + "d";
+        this.symbolPerSymbolFormat = "%" + this.placesPerSymbol + "s";
+    }
+
     public ConsoleRenderer(int placesPerSymbol) {
         this.placesPerSymbol = placesPerSymbol;
         this.digitsPerSymbolFormat = "%" + this.placesPerSymbol + "d";
         this.symbolPerSymbolFormat = "%" + this.placesPerSymbol + "s";
     }
 
-
     @Override
-    public void draw(IField field) {
+    public void draw(IField field) throws KrestikinolikiException {
         if (field instanceof Field2D) {
             this.draw2D((Field2D) field);
         } else {
-            throw new RuntimeException(LOG_FIELD_CAST_ERROR);
+            throw new KrestikinolikiException(LOG_FIELD_CAST_ERROR);
         }
     }
 
@@ -81,7 +87,12 @@ public class ConsoleRenderer implements IRenderer {
         return new int[0];
     }
 
-    private void draw2D(Field2D field) {
+    @Override
+    public void logErrorMessage(String message) {
+        System.out.println(message);
+    }
+
+    private void draw2D(Field2D field) throws KrestikinolikiException {
         int sizeX = field.getSize()[0];
         int sizeY = field.getSize()[1];
         drawTopLine(sizeY);
@@ -116,7 +127,7 @@ public class ConsoleRenderer implements IRenderer {
         System.out.println(BOTTOM_RIGHT_CORNER);
     }
 
-    private void drawMiddleLine(int lineNumber, int sizeY, Field2D field) {
+    private void drawMiddleLine(int lineNumber, int sizeY, Field2D field) throws KrestikinolikiException {
         System.out.print(lineNumber);
         System.out.print(VERTICAL_LINE);
         for (int j = 0; j < sizeY; j++) {

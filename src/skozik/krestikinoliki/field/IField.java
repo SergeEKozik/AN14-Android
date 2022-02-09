@@ -7,10 +7,12 @@
 
 package skozik.krestikinoliki.field;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
+
 public interface IField {
     int[] getSize();
-    char getSymbol(int[] coordinates);
-    boolean setSymbol(char symbol, int[] coordinates);
+    char getSymbol(int[] coordinates) throws KrestikinolikiException;
+    boolean setSymbol(char symbol, int[] coordinates) throws KrestikinolikiException;
     boolean hasEmptyCells();
     int[][] getEmptyCoordinates();
     char getDefaultSymbol();

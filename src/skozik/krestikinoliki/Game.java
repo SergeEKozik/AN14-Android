@@ -9,6 +9,7 @@ package skozik.krestikinoliki;
 
 import static skozik.krestikinoliki.common.KrestikiNolikiConstants.*;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.field.Field2D;
 import skozik.krestikinoliki.field.IField;
 import skozik.krestikinoliki.gamer.Gamer;
@@ -21,8 +22,8 @@ import skozik.krestikinoliki.renderer.IRenderer;
 
 public class Game {
 
-    private static IRenderer renderer = new ConsoleRenderer(PLACES_PER_SYMBOL);
-    private static IIntelligence intelligence = new Intelligence2D(MAX_FORECAST_LEVEL);
+    private static final IRenderer renderer = new ConsoleRenderer(PLACES_PER_SYMBOL);
+    private static final IIntelligence intelligence = new Intelligence2D(MAX_FORECAST_LEVEL, renderer);
 
     public static void main(String[] args) {
         IField field = new Field2D(DEFAULT_SYMBOL, SIZE_X, SIZE_Y);
@@ -46,31 +47,35 @@ public class Game {
     }
 
     private static boolean makeTurn(IField field, IGamer gamer, IGamer enemy) {
-        renderer.draw(field);
-        if (!askForTurn(gamer, field, enemy)) {
-            renderer.warnGameHalt();
-            return false;
+        try {
+            renderer.draw(field);
+            if (!askForTurn(gamer, field, enemy)) {
+                renderer.warnGameHalt();
+                return false;
+            }
+            return !isGameOver(gamer, field);
+        } catch (KrestikinolikiException e) {
+            renderer.logErrorMessage(e.getMessage());
         }
-        return !isGameOver(gamer, field);
+        return false;
     }
 
-    private static boolean askForTurn(IGamer gamer, IField field, IGamer enemy) {
+    private static boolean askForTurn(IGamer gamer, IField field, IGamer enemy) throws KrestikinolikiException {
         renderer.warnGamerTurn(gamer);
         return (gamer instanceof GamerAI) ?
             askForTurnAI(gamer, field, enemy)
-            : askForTurnHuman(gamer, field, enemy);
+            : askForTurnHuman(gamer, field);
     }
 
-    private static boolean askForTurnAI(IGamer gamer, IField field, IGamer enemy) {
+    private static boolean askForTurnAI(IGamer gamer, IField field, IGamer enemy) throws KrestikinolikiException {
         int[] coordinates = intelligence.forecastNextStep(field, gamer, enemy);
         if (!field.setSymbol(gamer.getSymbol(), coordinates)) {
-            throw new RuntimeException(
-                String.format(LOG_MESSAGE_AI_TURN_ERROR, coordinates[0], coordinates[1]));
+            throw new KrestikinolikiException(LOG_MESSAGE_AI_TURN_ERROR, coordinates);
         }
         return true;
     }
 
-    private static boolean askForTurnHuman(IGamer gamer, IField field, IGamer enemy) {
+    private static boolean askForTurnHuman(IGamer gamer, IField field) throws KrestikinolikiException {
         int[] userInput = renderer.askGamerForCoordinates();
         while (userInput.length > 0) {
             if (field.setSymbol(gamer.getSymbol(), userInput)) {
@@ -83,7 +88,7 @@ public class Game {
         return false;
     }
 
-    private static boolean isGameOver(IGamer currentGamer, IField field) {
+    private static boolean isGameOver(IGamer currentGamer, IField field) throws KrestikinolikiException {
         if (!field.hasEmptyCells()) {
             renderer.draw(field);
             renderer.warnNoTurnsLeft();

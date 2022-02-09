@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
+
 public class Field2D implements IField {
 
     protected char defaultSymbol = ' ';
@@ -56,13 +58,13 @@ public class Field2D implements IField {
     }
 
     @Override
-    public char getSymbol(int[] coordinates) {
+    public char getSymbol(int[] coordinates) throws KrestikinolikiException {
         validateCoordinates(coordinates);
         return field[coordinates[0]][coordinates[1]];
     }
 
     @Override
-    public boolean setSymbol(char symbol, int[] coordinates) {
+    public boolean setSymbol(char symbol, int[] coordinates) throws KrestikinolikiException {
         validateCoordinates(coordinates);
         if (defaultSymbol == field[coordinates[0]][coordinates[1]]) {
             field[coordinates[0]][coordinates[1]] = symbol;
@@ -107,16 +109,15 @@ public class Field2D implements IField {
         return defaultSymbol;
     }
 
-    protected void validateCoordinates(int[] coordinates) {
+    protected void validateCoordinates(int[] coordinates)  throws KrestikinolikiException {
         if ((coordinates == null) || (coordinates.length != 2)) {
-            throw new RuntimeException(LOG_FIELD_COORDINATE_EXCEEDS_DIMENSIONS);
+            throw new KrestikinolikiException(LOG_FIELD_COORDINATE_EXCEEDS_DIMENSIONS, coordinates);
         }
         if ((coordinates[0] < 0)
             || (coordinates[0] > sizeX - 1)
             || (coordinates[1] < 0)
             || (coordinates[1] > sizeY - 1)) {
-            throw new RuntimeException(
-                String.format(LOG_FIELD_COORDINATE_EXCEEDS_SIZE, coordinates[0], coordinates[1]));
+            throw new KrestikinolikiException(LOG_FIELD_COORDINATE_EXCEEDS_SIZE, coordinates);
         }
     }
 }

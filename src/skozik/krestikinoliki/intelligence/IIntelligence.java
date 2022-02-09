@@ -6,10 +6,11 @@
 
 package skozik.krestikinoliki.intelligence;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.field.IField;
 import skozik.krestikinoliki.gamer.IGamer;
 
 public interface IIntelligence {
     boolean hasVictoryCondition(IGamer gamer, IField field);
-    int[] forecastNextStep(IField field, IGamer gamer, IGamer enemy);
+    int[] forecastNextStep(IField field, IGamer gamer, IGamer enemy) throws KrestikinolikiException;
 }

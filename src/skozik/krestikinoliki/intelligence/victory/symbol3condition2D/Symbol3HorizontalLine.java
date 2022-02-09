@@ -6,13 +6,14 @@
 
 package skozik.krestikinoliki.intelligence.victory.symbol3condition2D;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.field.IField;
 import skozik.krestikinoliki.intelligence.victory.VictoryCondition;
 
 public class Symbol3HorizontalLine implements VictoryCondition {
 
     @Override
-    public boolean apply(IField field, char symbol, int[] coordinates) {
+    public boolean apply(IField field, char symbol, int[] coordinates) throws KrestikinolikiException {
         int sizeX = field.getSize()[0];
         if ((coordinates[0] <= 0) || (coordinates[0] >= sizeX - 1)) {
             return false;

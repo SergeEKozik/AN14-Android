@@ -6,11 +6,12 @@
 
 package skozik.krestikinoliki.renderer;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.gamer.IGamer;
 import skozik.krestikinoliki.field.IField;
 
 public interface IRenderer {
-    void draw(IField field);
+    void draw(IField field) throws KrestikinolikiException;
     void warnGameHalt();
     void warnGamerWon(IGamer gamer);
     void warnGamerTurn(IGamer gamer);
@@ -18,5 +19,6 @@ public interface IRenderer {
     void warnPositionUsed(int[] coordinates);
     void warnNoTurnsLeft();
     int[] askGamerForCoordinates();
+    void logErrorMessage(String message);
 
 }

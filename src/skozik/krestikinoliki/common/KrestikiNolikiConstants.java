@@ -10,13 +10,13 @@ public interface KrestikiNolikiConstants {
     char DEFAULT_SYMBOL = '-';
     char PLAYER1_SYMBOL = 'X';
     char PLAYER2_SYMBOL = '0';
-    int PLACES_PER_SYMBOL = 8;
+    int PLACES_PER_SYMBOL = 3;
     int MAX_FORECAST_LEVEL = 5;
     int SIZE_X = 3;
     int SIZE_Y = 3;
     String PLAYER_1_DEFAULT_NAME = "Player 1";
     String PLAYER_2_DEFAULT_NAME = "Player 2";
-    String LOG_MESSAGE_AI_TURN_ERROR = "Ошибка искусственного интеллекта в точке (%d, %d)";
+    String LOG_MESSAGE_AI_TURN_ERROR = "Ошибка искусственного интеллекта";
     String LOG_FIELD_CAST_ERROR = "Unsupported type of field.";
     String CONSOLE_MSG_GAME_HALTED = "Игра прервана";
     String CONSOLE_MSG_PLAYER_WON = "Игрок %s победил!%n";
@@ -31,5 +31,5 @@ public interface KrestikiNolikiConstants {
     String BOTTOM_RIGHT_CORNER = "\u2519";
     String VERTICAL_LINE = "\u2502";
     String LOG_FIELD_COORDINATE_EXCEEDS_DIMENSIONS = "Coordinates are not equal to field dimensions";
-    String LOG_FIELD_COORDINATE_EXCEEDS_SIZE = "Coordinates %d %d are out of field size";
+    String LOG_FIELD_COORDINATE_EXCEEDS_SIZE = "Coordinates are out of field size";
 }

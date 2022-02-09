@@ -7,9 +7,10 @@
 
 package skozik.krestikinoliki.intelligence.victory;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.field.IField;
 
 @FunctionalInterface
 public interface VictoryCondition {
-    boolean apply(IField field, char symbol, int[] coordinates);
+    boolean apply(IField field, char symbol, int[] coordinates) throws KrestikinolikiException;
 }

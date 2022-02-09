@@ -13,18 +13,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.field.Field2D;
 import skozik.krestikinoliki.field.IField;
 import skozik.krestikinoliki.gamer.IGamer;
 import skozik.krestikinoliki.intelligence.victory.VictoryConditionFactory;
+import skozik.krestikinoliki.renderer.ConsoleRenderer;
+import skozik.krestikinoliki.renderer.IRenderer;
 
 public class Intelligence2D implements IIntelligence {
     private static final Random RANDOM = new Random();
 
     private final int maxForecastedLevel;
+    private final IRenderer renderer;
 
-    public Intelligence2D(int maxForecastedLevel) {
+    public Intelligence2D(int maxForecastedLevel, IRenderer renderer) {
         this.maxForecastedLevel = maxForecastedLevel;
+        this.renderer = renderer;
     }
 
     @Override
@@ -38,7 +43,14 @@ public class Intelligence2D implements IIntelligence {
             for (int j = 0; j < size[1]; j++) {
                 final int[] coordinates = new int[]{i, j};
                 if (VictoryConditionFactory.getVictoryConditions2DFor3Symbols().stream()
-                    .anyMatch(condition -> condition.apply(field, symbol, coordinates))) {
+                    .anyMatch(condition -> {
+                        try {
+                            return condition.apply(field, symbol, coordinates);
+                        } catch (KrestikinolikiException e) {
+                            renderer.logErrorMessage(e.getMessage());
+                        }
+                        return false;
+                    })) {
                     return true;
                 }
             }
@@ -48,7 +60,7 @@ public class Intelligence2D implements IIntelligence {
 
     private void calculateVictoryValues(IField field, int[] coordinates, char symbolFriend, char symbolEnemy,
                                         Map<Character, Map<Integer, Integer>> victories,
-                                        int forecastedLevel) {
+                                        int forecastedLevel)  throws KrestikinolikiException {
         if (forecastedLevel >= this.maxForecastedLevel) {
             return;
         }
@@ -89,7 +101,7 @@ public class Intelligence2D implements IIntelligence {
     }
 
     @Override
-    public int[] forecastNextStep(IField field, IGamer friend, IGamer enemy) {
+    public int[] forecastNextStep(IField field, IGamer friend, IGamer enemy) throws KrestikinolikiException {
         char symbolFriend = friend.getSymbol();
         char symbolEnemy = enemy.getSymbol();
         int[] fieldSize = field.getSize();
@@ -130,7 +142,8 @@ public class Intelligence2D implements IIntelligence {
      * @param victoriesTurns array of VictoriesTurns objects for each point of field
      * @return VictoriesTurns object which represents current player move with maximum variants of wins at the closest turn.
      */
-    private VictoriesTurns chooseClosestWin(IField field, int sizeX, int sizeY, VictoriesTurns[][] victoriesTurns) {
+    private VictoriesTurns chooseClosestWin(IField field, int sizeX, int sizeY, VictoriesTurns[][] victoriesTurns)
+        throws KrestikinolikiException {
         List<VictoriesTurns> closestWinTurns = new ArrayList<>();
         int nearestTurn = this.maxForecastedLevel;
         int maxWin = 0;
@@ -154,7 +167,7 @@ public class Intelligence2D implements IIntelligence {
         if (closestWinTurns.isEmpty()) {
             int[][] emptyCoordinates = field.getEmptyCoordinates();
             if (emptyCoordinates.length <= 0) {
-                throw new RuntimeException("No available space for AI turn!");
+                throw new KrestikinolikiException("No available space for AI turn!");
             }
             int[] coor = emptyCoordinates[RANDOM.nextInt(emptyCoordinates.length)];
             return new VictoriesTurns(this.maxForecastedLevel, 0, coor[0], coor[1]);

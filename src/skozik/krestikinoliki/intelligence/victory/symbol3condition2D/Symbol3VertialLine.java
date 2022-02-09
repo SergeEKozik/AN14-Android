@@ -6,12 +6,13 @@
 
 package skozik.krestikinoliki.intelligence.victory.symbol3condition2D;
 
+import skozik.krestikinoliki.exception.KrestikinolikiException;
 import skozik.krestikinoliki.field.IField;
 import skozik.krestikinoliki.intelligence.victory.VictoryCondition;
 
 public class Symbol3VertialLine implements VictoryCondition {
     @Override
-    public boolean apply(IField field, char symbol, int[] coordinates) {
+    public boolean apply(IField field, char symbol, int[] coordinates) throws KrestikinolikiException {
         int sizeY = field.getSize()[1];
         if ((coordinates[1] <= 0) || (coordinates[1] >= sizeY - 1)) {
             return false;
