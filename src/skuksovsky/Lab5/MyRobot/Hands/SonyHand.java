@@ -1,12 +1,10 @@
 package skuksovsky.Lab5.MyRobot.Hands;
 
-public class SonyHand extends SamsungHand {
+public class SonyHand extends Hand {
+
     public SonyHand(int price) {
         super(price);
+        super.setProducer("Sony");
     }
 
-    @Override
-    public void upHand() {
-        System.out.println("Поднимаю руку от Сони!");;
-    }
 }

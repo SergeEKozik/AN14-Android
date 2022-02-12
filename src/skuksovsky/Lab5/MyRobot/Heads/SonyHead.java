@@ -1,22 +1,10 @@
 package skuksovsky.Lab5.MyRobot.Heads;
 
-public class SonyHead implements IHead {
-    private  int price;
+public class SonyHead extends Head {
 
     public SonyHead(int price) {
-        this.price = price;
+        super(price);
+        super.setProducer("Sony");
     }
 
-    public SonyHead() {
-    }
-
-    @Override
-    public void speak(String text) {
-        System.out.println("Говорит голова Sony: " + text);
-    }
-
-    @Override
-    public int getPrice() {
-        return this.price;
-    }
 }

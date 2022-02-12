@@ -1,12 +1,10 @@
 package skuksovsky.Lab5.MyRobot.Legs;
 
-public class SonyLeg extends SamsungLeg {
+public class SonyLeg extends Leg {
+
     public SonyLeg(int price) {
         super(price);
+        super.setProducer("Sony");
     }
 
-    @Override
-    public void step() {
-        System.out.println("Шагаю в лучших традициях Сони!");
-    }
 }

@@ -1,21 +1,24 @@
 package skuksovsky.Lab5.MyRobot;
 
+import skuksovsky.Lab5.MyRobot.Hands.Hand;
 import skuksovsky.Lab5.MyRobot.Hands.SamsungHand;
+import skuksovsky.Lab5.MyRobot.Heads.Head;
 import skuksovsky.Lab5.MyRobot.Heads.SonyHead;
+import skuksovsky.Lab5.MyRobot.Legs.Leg;
 import skuksovsky.Lab5.MyRobot.Legs.SamsungLeg;
 
 
-public class Robot {
-    SonyHead head;
-    SamsungHand[] hands;
-    SamsungLeg[] legs;
+public class Robot <T1 extends Head, T2 extends Hand, T3 extends Leg> {
+    T1 head;
+    T2[] hands;
+    T3[] legs;
     private int price;
     String name;
 
-    public Robot(SonyHead head, SamsungHand[] hands, SamsungLeg[] legs, String name) {
-        this.head = head;
-        this.hands = hands;
-        this.legs = legs;
+    public Robot(Head head, Hand[] hands, Leg[] legs, String name) {
+        this.head = (T1) head;
+        this.hands = (T2[]) hands;
+        this.legs = (T3[]) legs;
         this.name = name;
     }
 
@@ -43,7 +46,7 @@ public class Robot {
     }
 
     void say(String text) {
-        System.out.println("\n" + "Говорит " + this.name);
+        System.out.println("\n" + this.name + ": ");
         this.head.speak(text);
     }
 

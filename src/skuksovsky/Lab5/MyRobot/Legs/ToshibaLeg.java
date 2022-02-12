@@ -1,12 +1,10 @@
 package skuksovsky.Lab5.MyRobot.Legs;
 
 public class ToshibaLeg extends SamsungLeg {
+
     public ToshibaLeg(int price) {
         super(price);
+        super.setProducer("Toshiba");
     }
 
-    @Override
-    public void step() {
-        System.out.println("Шагаю в лучших традициях Тошиба!");
-    }
 }

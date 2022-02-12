@@ -1,13 +1,9 @@
 package skuksovsky.Lab5.MyRobot.Heads;
 
-public class ToshibaHead extends SonyHead {
+public class ToshibaHead extends Head {
 
     public ToshibaHead(int price) {
         super(price);
-    }
-
-    @Override
-    public void speak(String text) {
-        System.out.println("Говорит голова Тошиба: " + text);
+        super.setProducer("Toshiba");
     }
 }
