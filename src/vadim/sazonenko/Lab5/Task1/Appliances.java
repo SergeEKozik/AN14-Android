@@ -56,8 +56,8 @@ public class Appliances {
     void Info(String manufacturer, String model) {
         System.out.println("Бренд: " + manufacturer);
         System.out.println("Модель: " + model);
-
     }
+
     int choosebrand (){
         return 0;
     }
