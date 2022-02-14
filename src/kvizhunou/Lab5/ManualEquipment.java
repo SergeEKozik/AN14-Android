@@ -1,8 +1,9 @@
 package kvizhunou.Lab5;
 
-public class ElectricalEquipments extends Management {
-    public ElectricalEquipments(String model, String producer) {
+public class ManualEquipment extends Management {
+    public ManualEquipment(String model, String producer) {
         super(model, producer);
+
     }
 
     @Override
@@ -10,8 +11,4 @@ public class ElectricalEquipments extends Management {
         super.DisplayInfo();
     }
 }
-
-
-
-
 
