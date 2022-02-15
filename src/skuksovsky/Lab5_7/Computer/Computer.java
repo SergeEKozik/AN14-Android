@@ -29,12 +29,9 @@ public class Computer {
     }
 
     void start() {
+        System.out.println("Пробуем запустить компьютер...");
         if (!isWorking && workingResource > 0) {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Введите пусковое число(0 или 1): ");
-            int startInputNumber = sc.nextInt();
-            int startRandomNumber = randomizer();
-            if (startInputNumber == startRandomNumber && workingResource > 0) {
+            if (inputCompare() && workingResource > 0) {
                 System.out.println("Включение успешно, запускаем систему.");
                 workingResource--;
                 isWorking = true;
@@ -51,12 +48,9 @@ public class Computer {
     }
 
     void stop() {
+        System.out.println("Пробуем выключить компьютер...");
         if (isWorking && workingResource > 0) {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Введите число для выключения (0 или 1): ");
-            int stopInputNumber = sc.nextInt();
-            int stopRandomNumber = randomizer();
-            if (stopInputNumber == stopRandomNumber && workingResource > 0) {
+            if (inputCompare() && workingResource > 0) {
                 System.out.println("Выключение прошло успешно, закрываемся.");
                 workingResource--;
                 isWorking = false;
@@ -73,7 +67,14 @@ public class Computer {
 
     private int randomizer() {
         Random random = new Random();
-        int  x  =  RANDOM_LOWER_LIMIT + random.nextInt(RANDOM_UPPER_LIMIT - RANDOM_LOWER_LIMIT + 1);
-        return x;
+        return RANDOM_LOWER_LIMIT + random.nextInt(RANDOM_UPPER_LIMIT - RANDOM_LOWER_LIMIT + 1);
+    }
+
+    private boolean inputCompare() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите число для выполнение операции (0 или 1): ");
+        int startInputNumber = sc.nextInt();
+        int startRandomNumber = randomizer();
+        return startInputNumber == startRandomNumber;
     }
 }
