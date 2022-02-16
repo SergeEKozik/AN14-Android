@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Buran implements IStart{
     public boolean preLaunchCheck() {
-        System.out.println("\nКакая страна создала Буран?");
+        System.out.print("\nКакая страна создала Буран? Ваш ответ: ");
         Scanner sc = new Scanner(System.in);
         boolean rezCheck;
         String country = sc.nextLine().toLowerCase(Locale.ROOT);
         if(country.equals("ussr") || country.equals("cccр") || country.equals("советский союз")){
             rezCheck = true;
-            System.out.println("Всё верно!");
+            System.out.println("Верно!");
         }
         else {
             rezCheck = false;
