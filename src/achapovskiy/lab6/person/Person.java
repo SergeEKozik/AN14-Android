@@ -19,8 +19,7 @@ import achapovskiy.lab6.person.shoes.IShoes;
             this.shoes = shoes;
         }
 
-        public Person() {
-        }
+
 
         public String getName() {
             return name;

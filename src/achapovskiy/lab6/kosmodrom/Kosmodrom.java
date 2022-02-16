@@ -10,8 +10,8 @@ public class Kosmodrom {
             }
             object.start();
         }
-        else{
-            System.out.println("Предстартовая проверка провалена");
+            else{
+                System.out.println("Предстартовая проверка провалена");
         }
     }
 }
