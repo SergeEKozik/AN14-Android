@@ -18,7 +18,6 @@ public class Computer implements IComputer {
         this.cpu = cpu;
         this.ram = ram;
         this.ssd = ssd;
-        burnedOut = true;
         powerResource = powerResourceCount(cpu.getResourсe(), ram.getResourсe(), ssd.getResourсe());
         System.out.println("Resource Count: " + powerResource);
     }
@@ -35,7 +34,7 @@ public class Computer implements IComputer {
         if (powerResource != 0) { powerResource--; return true; }
         else {
             System.out.println("The resource of power ON iterations has dried up");
-            this.burnedOut = false;
+            this.burnedOut = true;
             return false;
         }
     }
@@ -43,7 +42,7 @@ public class Computer implements IComputer {
     private boolean renderSuccess() {
         if (cpu.cpuRenderSuccess() && ram.ramRenderSuccess() && ssd.infoFlowProcessingSuccess()) return true;
         else {
-            this.burnedOut = false;
+            this.burnedOut = true;
             return false;
         }
     }
@@ -60,7 +59,7 @@ public class Computer implements IComputer {
     }
 
     public void turnON() {
-        if (!isONorOFF() && isBurnedOut() && powerResourceCheck() && renderSuccess()) {
+        if (!isONorOFF() && !isBurnedOut() && powerResourceCheck() && renderSuccess()) {
             onState = true;
             System.out.println("Computer power ON, resource power is: " + powerResource);
         }
