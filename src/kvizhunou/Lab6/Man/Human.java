@@ -1,19 +1,24 @@
-package kvizhunou.Man;
+package kvizhunou.Lab6.Man;
+
+import kvizhunou.Lab6.Man.Jacket.IJacket;
+import kvizhunou.Lab6.Man.Shoes.IShoes;
+import kvizhunou.Lab6.Man.Trousers.ITrousers;
 
 public class Human implements IHuman {
-    private String name;
+    private String humanName;
     private IJacket jacket;
     private ITrousers trousers;
     private IShoes shoes;
 
-    public Human(IJacket jacket, ITrousers trousers, IShoes shoes) {
+
+    public Human(String humanName,IJacket jacket, ITrousers trousers, IShoes shoes) {
         this.jacket = jacket;
         this.trousers = trousers;
         this.shoes = shoes;
     }
 
     public String getName() {
-        return name;
+        return humanName;
     }
 
     public void putOn() {
@@ -28,5 +33,11 @@ public class Human implements IHuman {
         jacket.takeOff();
         trousers.takeOff();
         shoes.takeOff();
+    }
+    public void DisplayInfo(){
+        System.out.println();
+        System.out.println();
+        System.out.println("");
+
     }
 }

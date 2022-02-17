@@ -1,4 +1,4 @@
-package kvizhunou.Man;
+package kvizhunou.Lab6.Man;
 
 public interface IHuman {
     void putOn();
