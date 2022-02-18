@@ -1,11 +1,12 @@
-package akalevich.Lesson_7.computer;
+package akalevich.Lesson_7;
 
-import akalevich.Lesson_7.computer.accessories.CPU.AMDCPU;
-import akalevich.Lesson_7.computer.accessories.CPU.IntelCPU;
-import akalevich.Lesson_7.computer.accessories.RAM.CrucialRAM8GB;
-import akalevich.Lesson_7.computer.accessories.RAM.KingstonRAM16GB;
-import akalevich.Lesson_7.computer.accessories.SSD.KingstonSSD126GB;
-import akalevich.Lesson_7.computer.accessories.SSD.SamsungSSD512GB;
+import akalevich.Lesson_7.Computer.Accessories.CPU.AMDCPU;
+import akalevich.Lesson_7.Computer.Accessories.CPU.IntelCPU;
+import akalevich.Lesson_7.Computer.Accessories.RAM.CrucialRAM8GB;
+import akalevich.Lesson_7.Computer.Accessories.RAM.KingstonRAM16GB;
+import akalevich.Lesson_7.Computer.Accessories.SSD.KingstonSSD126GB;
+import akalevich.Lesson_7.Computer.Accessories.SSD.SamsungSSD512GB;
+import akalevich.Lesson_7.Computer.Computer;
 
 public class MainApp {
 
@@ -19,7 +20,7 @@ public class MainApp {
     }
 
     static void test(Computer comp) {
-        System.out.println("");
+        System.out.println();
         comp.showInfo();
         for (int index = 0; index < ITERATIONS_FOR_COMPUTER_TEST; index++) { comp.turnON(); comp.turnOFF(); }
     }

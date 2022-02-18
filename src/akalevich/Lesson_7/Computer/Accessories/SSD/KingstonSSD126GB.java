@@ -1,6 +1,4 @@
-package akalevich.Lesson_7.computer.accessories.SSD;
-
-import akalevich.Lesson_7.computer.impl.ISSD;
+package akalevich.Lesson_7.Computer.Accessories.SSD;
 
 public class KingstonSSD126GB implements ISSD {
 
@@ -18,5 +16,5 @@ public class KingstonSSD126GB implements ISSD {
         System.out.println("SSD: Kingston SSD 126GB");
     }
 
-    public int getResourсe() { return KINGSTON_SSD_126GB_RESOURCE;}
+    public int getResource() { return KINGSTON_SSD_126GB_RESOURCE;}
 }

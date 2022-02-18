@@ -1,6 +1,4 @@
-package akalevich.Lesson_7.computer.accessories.RAM;
-
-import akalevich.Lesson_7.computer.impl.IRAM;
+package akalevich.Lesson_7.Computer.Accessories.RAM;
 
 public class CrucialRAM8GB implements IRAM {
 
@@ -18,6 +16,6 @@ public class CrucialRAM8GB implements IRAM {
         System.out.println("RAM: Crucial RAM 8GB");
     }
 
-    public int getResourсe() { return CRUCIAL_RAM_8GB_RESOURCE;}
+    public int getResource() { return CRUCIAL_RAM_8GB_RESOURCE;}
 }
 

@@ -1,11 +1,10 @@
-package akalevich.Lesson_7.computer;
+package akalevich.Lesson_7.Computer;
 
-import akalevich.Lesson_7.computer.impl.ICPU;
-import akalevich.Lesson_7.computer.impl.IRAM;
-import akalevich.Lesson_7.computer.impl.ISSD;
-import akalevich.Lesson_7.computer.impl.IComputer;
+import akalevich.Lesson_7.Computer.Accessories.CPU.ICPU;
+import akalevich.Lesson_7.Computer.Accessories.RAM.IRAM;
+import akalevich.Lesson_7.Computer.Accessories.SSD.ISSD;
 
-public class Computer implements IComputer {
+public class Computer {
 
     private ICPU cpu;
     private IRAM ram;
@@ -18,7 +17,7 @@ public class Computer implements IComputer {
         this.cpu = cpu;
         this.ram = ram;
         this.ssd = ssd;
-        powerResource = powerResourceCount(cpu.getResourсe(), ram.getResourсe(), ssd.getResourсe());
+        powerResource = powerResourceCount(cpu.getResource(), ram.getResource(), ssd.getResource());
         System.out.println("Resource Count: " + powerResource);
     }
 
@@ -48,8 +47,7 @@ public class Computer implements IComputer {
     }
 
     private boolean isONorOFF() {
-        if (onState) return true;
-        else return false;
+        return onState;
     }
 
     public void showInfo() {

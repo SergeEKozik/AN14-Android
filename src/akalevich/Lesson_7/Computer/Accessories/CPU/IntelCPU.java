@@ -1,6 +1,4 @@
-package akalevich.Lesson_7.computer.accessories.CPU;
-
-import akalevich.Lesson_7.computer.impl.ICPU;
+package akalevich.Lesson_7.Computer.Accessories.CPU;
 
 public class IntelCPU implements ICPU {
 
@@ -18,7 +16,7 @@ public class IntelCPU implements ICPU {
         System.out.println("CPU: Intel");
     }
 
-    public int getResourсe() { return INTEL_CPU_RESOURCE;}
+    public int getResource() { return INTEL_CPU_RESOURCE;}
 }
 
 

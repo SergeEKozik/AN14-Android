@@ -1,6 +1,4 @@
-package akalevich.Lesson_7.computer.accessories.CPU;
-
-import akalevich.Lesson_7.computer.impl.ICPU;
+package akalevich.Lesson_7.Computer.Accessories.CPU;
 
 public class AMDCPU implements ICPU {
 
@@ -16,5 +14,5 @@ public class AMDCPU implements ICPU {
 
     public void showInfo() { System.out.println("CPU: AMD"); }
 
-    public int getResourсe() { return AMD_CPU_RESOURCE;}
+    public int getResource() { return AMD_CPU_RESOURCE;}
 }

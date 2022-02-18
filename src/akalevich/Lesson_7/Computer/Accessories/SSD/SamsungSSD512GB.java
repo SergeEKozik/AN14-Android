@@ -1,6 +1,4 @@
-package akalevich.Lesson_7.computer.accessories.SSD;
-
-import akalevich.Lesson_7.computer.impl.ISSD;
+package akalevich.Lesson_7.Computer.Accessories.SSD;
 
 public class SamsungSSD512GB implements ISSD {
 
@@ -18,5 +16,5 @@ public class SamsungSSD512GB implements ISSD {
         System.out.println("SSD: Samsung SSD 512GB");
     }
 
-    public int getResourсe() { return SAMSUNG_SSD_512GB_RESOURCE;}
+    public int getResource() { return SAMSUNG_SSD_512GB_RESOURCE;}
 }

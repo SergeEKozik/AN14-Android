@@ -1,6 +1,4 @@
-package akalevich.Lesson_7.computer.accessories.RAM;
-
-import akalevich.Lesson_7.computer.impl.IRAM;
+package akalevich.Lesson_7.Computer.Accessories.RAM;
 
 public class KingstonRAM16GB implements IRAM {
 
@@ -18,5 +16,5 @@ public class KingstonRAM16GB implements IRAM {
         System.out.println("RAM: Kingston RAM 16GB");
     }
 
-    public int getResourсe() { return KINGSTON_RAM_16GB_RESOURCE;}
+    public int getResource() { return KINGSTON_RAM_16GB_RESOURCE;}
 }
