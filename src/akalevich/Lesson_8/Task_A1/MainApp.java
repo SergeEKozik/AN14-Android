@@ -3,6 +3,7 @@ package akalevich.Lesson_8.Task_A1;
 import akalevich.Lesson_8.Task_A1.Exceptions.WrongLoginException;
 import akalevich.Lesson_8.Task_A1.Exceptions.WrongPasswordConfirmException;
 import akalevich.Lesson_8.Task_A1.Exceptions.WrongPasswordException;
+import akalevich.Lesson_8.Task_A1.Utils.IScanner;
 
 import java.util.regex.Pattern;
 

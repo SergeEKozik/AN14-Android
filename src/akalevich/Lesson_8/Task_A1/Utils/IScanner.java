@@ -1,4 +1,4 @@
-package akalevich.Lesson_8.Task_A1;
+package akalevich.Lesson_8.Task_A1.Utils;
 
 import java.util.Scanner;
 
