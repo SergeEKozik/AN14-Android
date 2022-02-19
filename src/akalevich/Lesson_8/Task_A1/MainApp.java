@@ -13,35 +13,34 @@ public class MainApp implements IScanner {
     private static final int MAX_PASSWORD_LENGTH = 20;
 
     public static void main(String[] args) {
-        AccountVerify(login(), password(), passwordConfirm());
+        AccountVerify();
     }
 
-    public static String login() {
-        System.out.println("Login: ");
-        return scan.nextLine();
-    }
-
-    public static String password() {
-        System.out.println("Password: ");
-        return scan.nextLine();
-    }
-
-    public static String passwordConfirm() {
-        System.out.println("Confirm Password: ");
-        return scan.nextLine();
-    }
-
-    public static void AccountVerify(String login, String password, String passwordConfirm) {
+    public static void AccountVerify() {
         try {
-            if (login.length() >= MAX_LOGIN_LENGTH || !Pattern.matches("^[a-zA-Z0-9_]+$", login))
-                throw new WrongLoginException();
-            if (password.length() >= MAX_PASSWORD_LENGTH || !
-                    Pattern.matches("^[a-zA-Z0-9_]+$", password))
-                throw new WrongPasswordException();
-            if (!password.equals(passwordConfirm)) throw new WrongPasswordConfirmException();
+            loginCheck();
+            passwordCheck();
         }
          catch (WrongLoginException exception) { System.out.println("Incorrect Login"); }
          catch (WrongPasswordException exception) { System.out.println("Incorrect Password"); }
          catch (WrongPasswordConfirmException exception) { System.out.println("Wrong Password Confirm"); }
+    }
+
+    public static void loginCheck() throws WrongLoginException{
+        System.out.print("Login: ");
+        String login = scan.nextLine();
+        if (login.length() >= MAX_LOGIN_LENGTH || !Pattern.matches("^[a-zA-Z0-9_]+$", login)) throw new WrongLoginException();
+    }
+
+    public static void passwordCheck() throws WrongPasswordException, WrongPasswordConfirmException {
+        System.out.print("Password: ");
+        String password = scan.nextLine();
+        if (password.length() >= MAX_PASSWORD_LENGTH || !Pattern.matches("^[a-zA-Z0-9_]+$", password)) throw new WrongPasswordException();
+        passwordConfirmCheck(password);
+    }
+
+    public static void passwordConfirmCheck(String password) throws WrongPasswordConfirmException {
+        System.out.print("Confirm Password: ");
+        if (!password.equals(scan.nextLine())) throw new WrongPasswordConfirmException();
     }
 }
