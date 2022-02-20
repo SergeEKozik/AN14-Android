@@ -1,28 +1,16 @@
 package kvizhunou.Lab5;
 
 public class WashingMachine extends ElectricalEquipments {
-    private String brand=("Intesid");
-    private int age=3;
+    private String model = "Intesid";
+    private String producer = "Germany";
 
-    public WashingMachine(String name, int power, String included) {
-        super(name, power, included);
-        this.brand = brand;
-
-        if (power == 220);
-            else System.out.println("В сети");
-
-        if (power !=220);
-            else System.out.println("Не в сети");
-        }
-
-
-
-
-    public int getAge() {
-        return age;
+    public WashingMachine(String model, String producer) {
+        super(model, producer);
     }
 
-    public String getBrand() {
-        return brand;
+    @Override
+    public void DisplayInfo() {
+        super.DisplayInfo();
+        System.out.println("В сети");
     }
 }
