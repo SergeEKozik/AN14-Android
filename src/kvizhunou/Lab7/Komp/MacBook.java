@@ -21,18 +21,21 @@ public class MacBook {
     }
 
     public void scanOn() {
+        int checkReset=0;
 
-        int number = (int) (Math.random());
-        while (true) {
+        int number =(int) (Math.random()*2);
+         {
             System.out.println("Угадай число:");
             int input_number = scanner.nextInt();
-            if (input_number == number) {
+            if (input_number == number && checkReset==0) {
                 System.out.println("Угадали,я выключаюсь");
             } else if (input_number == 1) {
+                checkReset=1;
                 System.out.println("Не угадали, я сгорел");
             } else{
                 System.out.println("Мне конец");
-                break;
+                checkReset=0;
+
 
             }
 
