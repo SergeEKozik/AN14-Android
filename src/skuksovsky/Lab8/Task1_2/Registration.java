@@ -63,6 +63,7 @@ public class Registration {
     void registration() {
         while (true) {
             System.out.println("Регистрация");
+            System.out.println("Логин и пароль должны содержать не более 20 символов (допускаются только буквы, цифры и '_')");
             credentials_entering();
             try {
                 if (!users_data.containsKey(login)) {
