@@ -1,7 +1,7 @@
-package achapovskiy.lab7.Komp;
+package achapovskiy.lab7.Komp.Function;
 
 public interface ITurnON {
     boolean guessTheNumber();
-    void pcSwitchOf();
+    void pcSwitchOn_Of();
     void pcBurnedDown();
 }

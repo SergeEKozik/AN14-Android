@@ -1,8 +1,8 @@
-package achapovskiy.lab7.Komp;
+package achapovskiy.lab7.Komp.Function;
 
 import java.util.Scanner;
 
-public class Random implements ITurnON {
+public class On implements ITurnON {
     public boolean guessTheNumber() {
         int randomNum = (int) (Math.random() * 2);
         System.out.println("Рандом выбрал число : " + randomNum);
@@ -16,15 +16,10 @@ public class Random implements ITurnON {
         return rezRandom;
     }
 
-    public void pcSwitchOf(){
+    public void pcSwitchOn_Of(){
         System.out.println("PC выключен");
     }
     public void pcBurnedDown(){
         System.out.println("PC cгорел )=");
     }
-
-
-
-
-
 }
