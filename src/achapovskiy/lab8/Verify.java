@@ -11,7 +11,7 @@ public class Verify extends Registration {
             if (login.length() >= maxLogLenght || !TrueOrFalse) {
                 throw new WrongLoginException();
             }
-        } catch (WrongLoginException ignored) {
+        } catch (WrongLoginException exception) {
             System.out.println("Логин не удовлетворяет требованиям!");
             Verify.verLog(Registration.login());
         }
