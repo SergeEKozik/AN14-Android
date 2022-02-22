@@ -6,26 +6,40 @@ public class Verify extends Registration {
     private static String pass;
 
     public static void verLog(String login) throws WrongLoginException {
-        boolean TrueOrFalse = Pattern.matches("^[A-Za-z0-9_]+$",login);
-        if(login.length() >= maxLogLenght || !TrueOrFalse){
-            System.out.println("ошибка");
-            throw new WrongLoginException();
+        boolean TrueOrFalse = Pattern.matches("^[A-Za-z0-9_]+$", login);
+        try {
+            if (login.length() >= maxLogLenght || !TrueOrFalse) {
+                throw new WrongLoginException();
+            }
+        } catch (WrongLoginException ignored) {
+            System.out.println("Логин не удовлетворяет требованиям!");
+            Verify.verLog(Registration.login());
         }
     }
-    public static void verPas(String password) throws WrongPasswordException{
-        boolean TrueOrFalse = Pattern.matches("^[A-Za-z0-9_]+$",password);
-        if(password.length() >= maxPasLenght || !TrueOrFalse){
-            System.out.println("ошибка");
-            throw new WrongPasswordException();
-        }
-        else{
-            pass=password;
+
+    public static void verPas(String password) throws WrongPasswordException {
+        boolean TrueOrFalse = Pattern.matches("^[A-Za-z0-9_]+$", password);
+        try {
+            if (password.length() >= maxPasLenght || !TrueOrFalse) {
+                throw new WrongPasswordException();
+            } else {
+                pass = password;
+            }
+        } catch (WrongPasswordException exception) {
+            System.out.println("Пароль не удовлетворяет требованиям!");
+            Verify.verPas(Registration.password());
         }
     }
-   public static void verPasConf(String confirmPassword) throws WrongPasswordException{
-        if(!confirmPassword.equals(pass)){
-            System.out.println("ошибка");
-            throw new WrongPasswordException();
+
+    public static void verPasConf(String confirmPassword) throws WrongPasswordException {
+        try {
+            if (!confirmPassword.equals(pass)) {
+                throw new WrongPasswordException();
+            }
+        } catch (WrongPasswordException exception) {
+            System.out.println("Пароли не совпадают!");
+            Verify.verPasConf(Registration.confirmPassword());
         }
-    }}
+    }
+}
 
