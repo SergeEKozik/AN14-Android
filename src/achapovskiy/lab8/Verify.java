@@ -7,14 +7,11 @@ public class Verify extends Registration {
 
     public static void verLog(String login) throws WrongLoginException {
         boolean TrueOrFalse = Pattern.matches("^[A-Za-z0-9_]+$", login);
-        try {
             if (login.length() >= maxLogLenght || !TrueOrFalse) {
-                throw new WrongLoginException();
+                throw new WrongLoginException("Логин не удовлетворяет требованиям!");
             }
-        } catch (WrongLoginException exception) {
-            System.out.println("Логин не удовлетворяет требованиям!");
             Verify.verLog(Registration.login());
-        }
+
     }
 
     public static void verPas(String password) throws WrongPasswordException {
