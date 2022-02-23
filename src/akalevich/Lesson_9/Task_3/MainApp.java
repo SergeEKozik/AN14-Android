@@ -9,23 +9,26 @@ import java.util.List;
 public class MainApp {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
-        try {
-            input(list);
-        }
-        catch (IOException exception) { exception.printStackTrace(); }
+        input(list);
         output(list);
     }
 
-    public static void input(List<String> list) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Введите строки текста.");
-        System.out.println("Введите #ESC для завершения.");
-        while (true) {
-            String string = bufferedReader.readLine();
-            if (string.equals("#ESC")) break;
-            list.add(string);
+    public static void input(List<String> list) {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                System.out.println("Введите строки текста.");
+                System.out.println("Введите #ESC для завершения.");
+                while (true) {
+                    String string = bufferedReader.readLine();
+                    if (string.equals("#ESC")) break;
+                    list.add(string);
+                }
+            } finally {
+                bufferedReader.close();
+            }
         }
-        bufferedReader.close();
+        catch (IOException exception) { exception.printStackTrace(); }
     }
 
     public static void output(List<String> list) {

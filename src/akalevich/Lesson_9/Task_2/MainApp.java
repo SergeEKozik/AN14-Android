@@ -35,11 +35,15 @@ public class MainApp {
 
     public static void showTxtFile() {
         try {
-            try (Reader reader = new FileReader(TXT_ABS_PATH)) {
+            Reader reader = new FileReader(TXT_ABS_PATH);
+            try {
                 int index = 0;
                 while ((index = reader.read()) >= 0) {
                     System.out.print((char) index);
                 }
+            }
+            finally {
+                reader.close();
             }
         } catch (IOException exception) { exception.printStackTrace(); }
     }
