@@ -1,7 +1,6 @@
 package kvizhunou.Lab8;
 
-public class WrongPassAgainException extends Throwable {
+public class WrongPassAgainException extends Exception {
     public WrongPassAgainException() {
-
     }
 }
