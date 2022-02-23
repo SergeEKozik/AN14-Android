@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class MainApp {
 
-    public static final String TXT_ABS_PATH = "C:\\Users\\Приветствую\\Desktop\\Lesson_8_Task_2.txt";
+    public static final String TXT_ABS_PATH = "Lesson_8_Task_2.txt";
     public static final String DIR_ABS_PATH = "C:\\Users\\Приветствую\\Desktop\\ТЕСТ\\улица\\фото";
 
     public static void main(String[] args) {
