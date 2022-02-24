@@ -7,7 +7,6 @@ public class Main {
     public static void main(String[] args) throws WrongLoginException, WrongPasswordException {
         Authentication vadim = new Authentication();
         vadim.authorise();
-        System.out.println(vadim);
 
     }
 }
