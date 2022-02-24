@@ -16,18 +16,14 @@ public class MainApp {
         Collections.sort(byteList);
         showMaxCountsBytes(byteList);
     }
-
+//TODO s.shumski check please
     private static void bytesToList(File file, ArrayList<Byte> byteList) {
         try {
-            Reader reader = new FileReader(file);
-            try {
-                int index = 0;
+            try (Reader reader = new FileReader(file)) {
+                int index;
                 while ((index = reader.read()) >= 0) {
                     byteList.add((byte) index);
                 }
-            }
-            finally {
-                reader.close();
             }
         } catch (IOException exception) { exception.printStackTrace(); }
     }
