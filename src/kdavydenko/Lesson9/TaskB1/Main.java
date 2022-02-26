@@ -25,7 +25,6 @@ public class Main {
         reader.close();
         writer.flush();
         writer.close();
-
     }
 
 

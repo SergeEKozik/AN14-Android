@@ -12,7 +12,7 @@ public class GenerateFile {
         Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(generateFile), StandardCharsets.UTF_8));
 
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 100000000; i++) {
             switch ((int) (Math.random() * 3)) {
                 case 0 -> writer.write((char) (Math.random() * 26 + 65));
                 case 1 -> writer.write((char) (Math.random() * 26 + 97));
