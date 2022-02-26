@@ -1,4 +1,4 @@
-package vadim.sazonenko.Lab10.Generic.Task2;
+package vadim.sazonenko.Lab10.Generic.TaskB1;
 
 import java.util.ArrayList;
 
