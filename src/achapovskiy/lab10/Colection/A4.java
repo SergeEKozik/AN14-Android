@@ -25,12 +25,12 @@ public class A4 {
         long finishFirst = System.nanoTime();
         System.out.println(finishFirst - startFirst);
 
-        long startSecond = System.currentTimeMillis();
+        long startSecond = System.nanoTime();
         while (num<10000){
-            firstList.get((int)(Math.random() * choice));
+            secondList.get((int)(Math.random() * choice));
             num++;
         }
-        long finishSecond = System.currentTimeMillis();
+        long finishSecond = System.nanoTime();
         System.out.println(finishSecond - startSecond);
     }
 }
