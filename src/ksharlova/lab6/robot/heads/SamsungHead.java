@@ -1,5 +1,7 @@
 package ksharlova.lab6.robot.heads;
 
+import ksharlova.lab6.robot.heads.IHead;
+
 public class SamsungHead implements IHead {
     private int price;
 

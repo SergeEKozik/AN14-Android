@@ -1,5 +1,7 @@
 package ksharlova.lab6.robot.hands;
 
+import ksharlova.lab6.robot.hands.IHand;
+
 public class SamsungHand implements IHand{
         private int price;
         public SamsungHand(int price){

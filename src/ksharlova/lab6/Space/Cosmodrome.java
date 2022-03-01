@@ -26,11 +26,12 @@ public class Cosmodrome{
         for (int i = 10; i >= 0; i--){
             System.out.print(i + " ");
             try {
-                TimeUnit.MILLISECONDS.sleep(50);
+                TimeUnit.MILLISECONDS.sleep(400);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        System.out.println();
     }
 
 }

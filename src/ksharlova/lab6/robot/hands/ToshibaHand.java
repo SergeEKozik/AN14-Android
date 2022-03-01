@@ -1,5 +1,7 @@
 package ksharlova.lab6.robot.hands;
 
+import ksharlova.lab6.robot.hands.IHand;
+
 public class ToshibaHand implements IHand{
     private int price;
 

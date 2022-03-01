@@ -1,5 +1,7 @@
 package ksharlova.lab6.robot.legs;
 
+import ksharlova.lab6.robot.legs.ILeg;
+
 public class SamsungLeg implements ILeg{
     private int price;
 
