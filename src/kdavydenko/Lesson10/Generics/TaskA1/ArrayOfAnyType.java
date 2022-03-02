@@ -15,7 +15,7 @@ public class ArrayOfAnyType<T> {
         this.list = list;
     }
 
-    public T getElementById(Integer id){
+    public T getElementById(Integer id) {
         return this.list.get(id);
     }
 }
