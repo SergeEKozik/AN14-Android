@@ -1,4 +1,4 @@
-package VNazarov;
+package VNazarov.Lab10;
 
 import java.util.*;
 
