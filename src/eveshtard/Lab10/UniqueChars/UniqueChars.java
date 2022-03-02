@@ -1,0 +1,43 @@
+package eveshtard.Lab10.UniqueChars;
+
+//Вычислить сколько раз каждая буква встречается в тексте.
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class UniqueChars {
+    private final Map<Character, Integer> map = new HashMap<>();
+    private String text;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void calculate() {
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c)) {
+                if (map.containsKey(c)) {
+                    map.put(c, map.get(c) + 1);
+                } else {
+                    map.put(c, 1);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            result += "char: " + entry.getKey() +
+                    "; count: " + entry.getValue() + "\n";
+        }
+        return result;
+    }
+}
+
+
