@@ -1,4 +1,4 @@
-package eveshtard.Lab11;
+package eveshtard.Lab11.Library;
 
 import java.util.HashMap;
 import java.util.HashSet;
