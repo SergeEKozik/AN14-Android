@@ -1,20 +1,18 @@
 package kdavydenko.Lesson11_12.TaskA1;
 
 public class Library {
-
-    private int countBookInPlace;
-    private int countBookToGo;
-
-    public Library(int countBookInPlace, int countBookToGo) {
-        this.countBookInPlace = countBookInPlace;
-        this.countBookToGo = countBookToGo;
+    public Library() {
     }
 
-    public void getBooks(int numberOfClient) {
+    public void getBooks(int numberOfClient, int countBookInPlace, int countBookToGo) {
         synchronized (this) {
             System.out.println("Client " + numberOfClient);
-            System.out.println("Book in place " + this.countBookInPlace);
-            System.out.println("Book to go " + this.countBookToGo);
+            System.out.println("Book in place " + countBookInPlace);
+            System.out.println("Book to go " + countBookToGo);
         }
+    }
+
+    public void returnBooks(int numberOfClient) {
+        System.out.println("Client " + numberOfClient + " returned the books");
     }
 }
