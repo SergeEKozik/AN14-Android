@@ -4,7 +4,7 @@ public class Run {
     public static void main(String[] args) {
 
         Parking parking = new Parking();
-        parking.setAuto("Auto");
+        parking.setParkedAuto(true);
         Thread car1 = new Thread(parking);
         Thread car2 = new Thread(parking);
         Thread car3 = new Thread(parking);
@@ -24,9 +24,5 @@ public class Run {
         car7.start();
         car8.start();
         car9.start();
-
-        /*parking.setAuto("Vanya");
-        Thread car2 = new Thread(parking);
-        car2.start();*/
     }
 }

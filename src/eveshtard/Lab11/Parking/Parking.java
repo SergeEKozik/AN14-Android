@@ -6,62 +6,66 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parking implements Runnable {
-    private static final Map<Integer, String> parking = generateParking();
-    private String auto;
 
-    public void setAuto(String auto) {
-        this.auto = auto;
+    private static final int FREE_PLACE_WAITING_TIME = 6000;
+    private static final int PARKING_TIME = 5000;
+    private static final int PARKING_PLACES = 4;
+    private static final Map<Integer, Boolean> PARKING = generateParking();
+    private Boolean parkedAuto;
+
+    public void setParkedAuto(Boolean parkedAuto) {
+        this.parkedAuto = parkedAuto;
     }
-
 
     @Override
     public void run() {
         try {
-            carParking(auto);
+            carParking(parkedAuto);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public void carParking(String auto) throws InterruptedException {
-        if (!parking.containsValue(null)) {
-            synchronized (this) {
-                Thread.sleep(5200);
-            }
-            if (!parking.containsValue(null)) {
-                System.out.println(" автомобиль уехал на другую парковку");
-            } else {
-                parkingToFreePlace(auto);
-            }
+    public void carParking(Boolean parkedAuto) throws InterruptedException {
+        if (hasFreePlace()) {
+            Thread.sleep(FREE_PLACE_WAITING_TIME);
+            if (hasFreePlace()) {
+                System.out.println("The car moved to another parking.");
+            } else parkingToFreePlace(parkedAuto);
         } else {
-            parkingToFreePlace(auto);
+            parkingToFreePlace(parkedAuto);
         }
     }
 
-    private void parkingToFreePlace(String auto) throws InterruptedException {
+    private void parkingToFreePlace(Boolean parked) throws InterruptedException {
         Integer currentPlace = null;
-        for (Integer place : parking.keySet()) {
-            if (parking.get(place) == null) {
-                parking.put(place, auto);
-                currentPlace = place;
-                System.out.println("Машина припарковалась " + place );
-                break;
+        synchronized (this) {
+            for (Integer place : PARKING.keySet()) {
+                if (!PARKING.get(place)) {
+                    PARKING.put(place, parked);
+                    currentPlace = place;
+                    System.out.println("The car is parked " + place);
+                    break;
+                }
             }
         }
         if (currentPlace == null) {
-            System.out.println("Все места уже заняты ");
+            System.out.println("All seats are already taken, the car has left ");
             return;
         }
-        Thread.sleep(5000);
-        parking.put(currentPlace, null);
-        System.out.println("Машина освободила место" + currentPlace);
+        Thread.sleep(PARKING_TIME);
+        PARKING.put(currentPlace, false);
+        System.out.println("The car left the parking " + currentPlace);
     }
 
-    private static Map<Integer, String> generateParking() {
-        Map<Integer, String> parkingPlace = new HashMap<>();
-        for (int i = 1; i < 6; i++) {
-            parkingPlace.put(i, null);
+    private synchronized boolean hasFreePlace() {
+        return !PARKING.containsValue(false);
+    }
 
+    private static Map<Integer, Boolean> generateParking() {
+        Map<Integer, Boolean> parkingPlace = new HashMap<>();
+        for (int i = 1; i < PARKING_PLACES; i++) {
+            parkingPlace.put(i, false);
         }
         return parkingPlace;
     }
