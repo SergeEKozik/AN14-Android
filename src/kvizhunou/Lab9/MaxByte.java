@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+
 public class MaxByte {
     public static void main(String[] args) throws Exception {
+
         String fileName = new BufferedReader(new InputStreamReader(System.in)).readLine();
-        FileInputStream fileInputStream = new FileInputStream(fileName);
+        FileInputStream fileInputStream = new FileInputStream("D:/Тест.txt");
         //массив где будут индексы,значения счетчик этих байт
         byte[] bytes = new byte[256];
         byte byteHigh;
@@ -16,7 +18,6 @@ public class MaxByte {
             byteHigh = (byte) fileInputStream.read();
             bytes[byteHigh] += 1;
         }
-        /*-----------------------------------*/
         //вычисляем "наибольшую частоту встречаемости байта"
         int maxValue = bytes[0];
         for (int i = 0; i < bytes.length; i++) {
@@ -28,7 +29,7 @@ public class MaxByte {
         for (int i = 0; i < bytes.length; i++) {
             if (bytes[i] == maxValue) {
                 System.out.print(i);
-                System.out.print(" ");
+                System.out.println("Максимальный байт :"  );
             }
         }
 
