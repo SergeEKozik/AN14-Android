@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Massive {
     private List<String> strList = new ArrayList<>();
+    private List listForDisplay = new ArrayList();
     private String regexForNumbers = "^[0-9]*\\.?[0-9]*$";
     private String regexForInts = "^[0-9]*\\.0$";
     private float[] flMas;
@@ -13,6 +14,8 @@ public class Massive {
         for (Object o : list) {
             strList.add(o.toString());
         }
+
+        this.listForDisplay = list;
     }
 
     private void removeNotNumbers(){
@@ -66,11 +69,11 @@ public class Massive {
             max = String.valueOf(stringBuffer);
         }else max = strList.get(strList.size() - 1);
 
-        System.out.println("Min element is " + min);
-        System.out.println("Max element is " + max);
+        System.out.println("Min number is " + min);
+        System.out.println("Max number is " + max);
     }
 
     public void display(){
-        System.out.println(strList);
+        System.out.println(listForDisplay);
     }
 }

@@ -17,6 +17,6 @@ public class Run {
         mas.display();
 
         mas.getMaxAndMin();
-//        mas.display();
+        mas.display();
     }
 }
