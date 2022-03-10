@@ -9,7 +9,6 @@ package skozik.lesson11.bank.office;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import skozik.lesson11.bank.exception.BankException;
@@ -22,6 +21,7 @@ public class OfficeManager {
     private int numberOfCashier;
 
     public OfficeManager(int numberOfCashier) {
+        this.transactionQueue = new SynchronousQueue<>();
         this.numberOfCashier = numberOfCashier;
         startCashierPool();
     }

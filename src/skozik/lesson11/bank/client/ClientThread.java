@@ -10,16 +10,16 @@ import skozik.lesson11.bank.exception.BankException;
 import skozik.lesson11.bank.office.OfficeManager;
 import skozik.lesson11.bank.transaction.ClientTransactionResult;
 import skozik.lesson11.bank.transaction.IClientTransaction;
-import skozik.lesson11.bank.userinterface.IRenderer;
+import skozik.lesson11.bank.userinterface.Renderer;
 
 public class ClientThread implements Runnable {
     private String id;
     private IClientTransaction clientTransaction;
     private OfficeManager officeManager;
-    private IRenderer renderer;
+    private Renderer renderer;
 
     public ClientThread(String id, IClientTransaction clientTransaction,
-                        OfficeManager officeManager, IRenderer renderer) {
+                        OfficeManager officeManager, Renderer renderer) {
         this.id = id;
         this.clientTransaction = clientTransaction;
         this.officeManager = officeManager;

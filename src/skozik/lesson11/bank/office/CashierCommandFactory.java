@@ -6,9 +6,6 @@
 
 package skozik.lesson11.bank.office;
 
-import static skozik.lesson11.bank.BankConstants.DEPOSIT_REPORT_FORMAT;
-import static skozik.lesson11.bank.BankConstants.WITHDRAW_REPORT_FORMAT;
-
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Function;

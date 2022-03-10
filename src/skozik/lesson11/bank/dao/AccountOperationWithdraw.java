@@ -6,7 +6,6 @@
 
 package skozik.lesson11.bank.dao;
 
-import static skozik.lesson11.bank.BankConstants.DEPOSIT_REPORT_FORMAT;
 import static skozik.lesson11.bank.BankConstants.STATUS_OK;
 import static skozik.lesson11.bank.BankConstants.WITHDRAW_REPORT_FORMAT;
 

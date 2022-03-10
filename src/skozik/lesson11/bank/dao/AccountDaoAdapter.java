@@ -6,12 +6,7 @@
 
 package skozik.lesson11.bank.dao;
 
-import static skozik.lesson11.bank.BankConstants.NOT_IMPLEMENTED_REPORT_FORMAT;
 import static skozik.lesson11.bank.BankConstants.STATUS_ERROR;
-import static skozik.lesson11.bank.BankConstants.STATUS_OK;
-import static skozik.lesson11.bank.BankConstants.WITHDRAW_REPORT_FORMAT;
-
-import skozik.lesson11.bank.currency.CurrencyAmount;
 import skozik.lesson11.bank.transaction.ClientTransactionDeposit;
 import skozik.lesson11.bank.transaction.ClientTransactionResult;
 import skozik.lesson11.bank.transaction.ClientTransactionWithdraw;

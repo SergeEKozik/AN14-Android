@@ -9,12 +9,15 @@ package skozik.lesson11.bank.dao;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.locks.Lock;
 
 import skozik.lesson11.bank.currency.CurrencyAmount;
 import skozik.lesson11.bank.exception.BankException;
+import skozik.lesson11.bank.treasury.Treasury;
 
 public class AccountDao {
     private static ConcurrentMap<String, CurrencyAmount> bankAccounts = new ConcurrentHashMap<>();
+    private static LockChannel lockChannel = new LockChannel("Dao-lockchannel");
 
     public static void setAccounts(Map<String, CurrencyAmount> accounts) {
         for (Map.Entry<String, CurrencyAmount> entry : accounts.entrySet()) {
@@ -23,9 +26,44 @@ public class AccountDao {
     }
 
     public static void withdraw(String account, CurrencyAmount amount) throws BankException {
-        throw new RuntimeException("Not implemented");
+        Lock lock = lockChannel.getLock(account);
+        lock.lock();
+        try {
+            CurrencyAmount currentAmount = validateAccountAndGet(account);
+            validateCurrency(currentAmount, amount);
+            if (currentAmount.getAmount().compareTo(amount.getAmount()) < 0) {
+//                throw new BankException();
+            }
+            Treasury.releaseCash(amount);
+            currentAmount.setAmount(currentAmount.getAmount().subtract(amount.getAmount()));
+        } finally {
+            lock.unlock();
+        }
     }
     public static void deposit(String account, CurrencyAmount amount) throws BankException {
-        throw new RuntimeException("Not implemented");
+        Lock lock = lockChannel.getLock(account);
+        lock.lock();
+        try {
+            CurrencyAmount currentAmount = validateAccountAndGet(account);
+            validateCurrency(currentAmount, amount);
+            Treasury.storeCash(amount);
+            currentAmount.setAmount(currentAmount.getAmount().add(amount.getAmount()));
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    private static CurrencyAmount validateAccountAndGet(String account) throws BankException {
+        CurrencyAmount currentAmount = bankAccounts.get(account);
+        if (currentAmount == null) {
+//            throw new BankException();
+        }
+        return currentAmount;
+    }
+
+    private static void validateCurrency(CurrencyAmount currentAmount, CurrencyAmount amount) throws BankException {
+        if (currentAmount.getCurrencyType() != amount.getCurrencyType()) {
+//            throw new BankException();
+        }
     }
 }
