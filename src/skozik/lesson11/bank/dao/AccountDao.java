@@ -11,8 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.locks.Lock;
 
+import skozik.lesson11.bank.common.LockChannel;
 import skozik.lesson11.bank.currency.CurrencyAmount;
 import skozik.lesson11.bank.exception.BankException;
+import skozik.lesson11.bank.exception.ExceptionCode;
 import skozik.lesson11.bank.treasury.Treasury;
 
 public class AccountDao {
@@ -32,7 +34,7 @@ public class AccountDao {
             CurrencyAmount currentAmount = validateAccountAndGet(account);
             validateCurrency(currentAmount, amount);
             if (currentAmount.getAmount().compareTo(amount.getAmount()) < 0) {
-//                throw new BankException();
+                throw new BankException(ExceptionCode.BEM_0006);
             }
             Treasury.releaseCash(amount);
             currentAmount.setAmount(currentAmount.getAmount().subtract(amount.getAmount()));
@@ -56,14 +58,14 @@ public class AccountDao {
     private static CurrencyAmount validateAccountAndGet(String account) throws BankException {
         CurrencyAmount currentAmount = bankAccounts.get(account);
         if (currentAmount == null) {
-//            throw new BankException();
+            throw new BankException(ExceptionCode.BEM_0004);
         }
         return currentAmount;
     }
 
     private static void validateCurrency(CurrencyAmount currentAmount, CurrencyAmount amount) throws BankException {
         if (currentAmount.getCurrencyType() != amount.getCurrencyType()) {
-//            throw new BankException();
+            throw new BankException(ExceptionCode.BEM_0005);
         }
     }
 }

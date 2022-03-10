@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 import skozik.lesson11.bank.BankConstants;
+import skozik.lesson11.bank.common.BankUtil;
 import skozik.lesson11.bank.currency.CurrencyAmount;
 import skozik.lesson11.bank.currency.CurrencyType;
 
@@ -27,20 +28,12 @@ public class Treasury {
 
     public static void releaseCash(CurrencyAmount amount) {
         AtomicReference<BigDecimal> currentAmount = amounts.computeIfAbsent(amount.getCurrencyType(), c -> new AtomicReference<>(BigDecimal.ZERO));
-        while (true) {
-            BigDecimal oldVal = currentAmount.get();
-            if (currentAmount.compareAndSet(oldVal, oldVal.subtract(amount.getAmount())))
-                return;
-        }
+        BankUtil.getAndSubtractAtomicReference(currentAmount, amount.getAmount());
     }
 
     public static void storeCash(CurrencyAmount amount) {
         AtomicReference<BigDecimal> currentAmount = amounts.computeIfAbsent(amount.getCurrencyType(), c -> new AtomicReference<>(BigDecimal.ZERO));
-        while (true) {
-            BigDecimal oldVal = currentAmount.get();
-            if (currentAmount.compareAndSet(oldVal, oldVal.add(amount.getAmount())))
-                return;
-        }
+        BankUtil.getAndAddAtomicReference(currentAmount, amount.getAmount());
     }
 
     public static AtomicReference<BigDecimal> getCurrencyAmount(CurrencyType type) {

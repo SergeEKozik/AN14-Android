@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-package skozik.lesson11.bank.dao;
+package skozik.lesson11.bank.common;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -21,8 +21,6 @@ public class LockChannel {
     }
 
     public Lock getLock(String lockId) {
-        Lock result = null;
-        result = locks.computeIfAbsent(lockId, id -> new ReentrantLock());
-        return result;
+        return locks.computeIfAbsent(lockId, id -> new ReentrantLock());
     }
 }

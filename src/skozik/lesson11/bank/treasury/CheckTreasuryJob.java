@@ -7,17 +7,18 @@
 package skozik.lesson11.bank.treasury;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 import skozik.lesson11.bank.BankConstants;
 import skozik.lesson11.bank.currency.CurrencyType;
+import skozik.lesson11.bank.userinterface.Renderer;
 
 public class CheckTreasuryJob implements Runnable {
 
-    private static HashMap<CurrencyType, BigDecimal> maxLimits = new HashMap<>();
-    private static HashMap<CurrencyType, BigDecimal> minLimits = new HashMap<>();
+    private static final EnumMap<CurrencyType, BigDecimal> maxLimits = new EnumMap<>(CurrencyType.class);
+    private static final EnumMap<CurrencyType, BigDecimal> minLimits = new EnumMap<>(CurrencyType.class);
     static {
         maxLimits.put(CurrencyType.TALENT, BankConstants.CURRENCY_TALENT_MAX_TREASURY_LIMIT);
         minLimits.put(CurrencyType.TALENT, BankConstants.CURRENCY_TALENT_MIN_TREASURY_LIMIT);
@@ -34,6 +35,11 @@ public class CheckTreasuryJob implements Runnable {
                     oldVal = currentAmount.get();
                 } while (!currentAmount.compareAndSet(oldVal,
                     oldVal.add(BankConstants.CURRENCY_TALENT_TRANCHE_TREASURY)));
+                Renderer.printMessage(
+                    String.format(
+                        BankConstants.TREASURY_ADD_JOB_REPORT,
+                        BankConstants.CURRENCY_TALENT_TRANCHE_TREASURY,
+                        minLimit.getKey().getShortName()));
             }
         }
         for (Map.Entry<CurrencyType, BigDecimal> maxLimit : maxLimits.entrySet()) {
@@ -44,6 +50,11 @@ public class CheckTreasuryJob implements Runnable {
                 do {
                     oldVal = currentAmount.get();
                 } while (!currentAmount.compareAndSet(oldVal, oldVal.subtract(difference)));
+                Renderer.printMessage(
+                    String.format(
+                        BankConstants.TREASURY_REMOVE_JOB_REPORT,
+                        difference,
+                        maxLimit.getKey().getShortName()));
             }
         }
     }
