@@ -16,9 +16,12 @@ public interface BankConstants {
     String NOT_IMPLEMENTED_REPORT_FORMAT = "Operation %s is not implemented";
     int TREASURY_CHECK_JOB_PERIOD_SEC = 1;
     BigDecimal CURRENCY_TALENT_MAX_TREASURY_LIMIT = new BigDecimal(100);
-    BigDecimal CURRENCY_TALENT_MIN_TREASURY_LIMIT = new BigDecimal(100);
+    BigDecimal CURRENCY_TALENT_MIN_TREASURY_LIMIT = new BigDecimal(10);
     BigDecimal CURRENCY_TALENT_TRANCHE_TREASURY = new BigDecimal(50);
     String CLIENT_TRANSACTION_REPORT_FORMAT = "client %s %s %s\n";
     String TREASURY_ADD_JOB_REPORT = "Treasury job move from treasury to Bank %s%s";
     String TREASURY_REMOVE_JOB_REPORT = "Treasury job move from Bank to treasury %s%s";
+    String TREASURY_JOB_START_REPORT = "Treasury job is running";
+    int CASHIER_TASK_PERIOD_CHECK_MS = 900;
+    int CASHIER_POOL_STOP_WAIT_SEC = 1;
 }

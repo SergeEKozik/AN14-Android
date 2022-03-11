@@ -6,6 +6,8 @@
 
 package skozik.lesson11.bank.treasury;
 
+import static skozik.lesson11.bank.BankConstants.TREASURY_JOB_START_REPORT;
+
 import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.Map;
@@ -27,6 +29,7 @@ public class CheckTreasuryJob implements Runnable {
 
     @Override
     public void run() {
+        Renderer.printMessage(TREASURY_JOB_START_REPORT);
         for (Map.Entry<CurrencyType, BigDecimal> minLimit : minLimits.entrySet()) {
             AtomicReference<BigDecimal> currentAmount = Treasury.getCurrencyAmount(minLimit.getKey());
             BigDecimal oldVal = currentAmount.get();

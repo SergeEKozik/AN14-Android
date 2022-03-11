@@ -21,9 +21,11 @@ public class CashierTask implements Runnable {
         while (this.isActive) {
             try {
                 IClientTransaction clientTransaction = officeManager.getClientTask();
-                clientTransaction.putResult(
-                    CashierCommandFactory.getCommand(clientTransaction.getType())
-                        .apply(clientTransaction));
+                if (clientTransaction != null) {
+                    clientTransaction.putResult(
+                        CashierCommandFactory.getCommand(clientTransaction.getType())
+                            .apply(clientTransaction));
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
