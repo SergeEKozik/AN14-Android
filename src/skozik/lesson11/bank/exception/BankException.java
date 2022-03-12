@@ -15,4 +15,8 @@ public class BankException extends Exception {
     public BankException(ExceptionCode code) {
         super(code.getMsg());
     }
+
+    public BankException(ExceptionCode code, String message) {
+        super(code.getMsg() + message);
+    }
 }

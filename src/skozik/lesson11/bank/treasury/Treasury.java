@@ -9,6 +9,7 @@ package skozik.lesson11.bank.treasury;
 import static skozik.lesson11.bank.BankConstants.TREASURY_CHECK_JOB_PERIOD_SEC;
 
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executors;
@@ -52,5 +53,9 @@ public class Treasury {
         } finally {
             scheduler.shutdownNow();
         }
+    }
+
+    public static Map<CurrencyType, AtomicReference<BigDecimal>> getTreasury() {
+        return amounts;
     }
 }

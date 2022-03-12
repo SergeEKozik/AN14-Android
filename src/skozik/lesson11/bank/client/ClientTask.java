@@ -12,28 +12,26 @@ import skozik.lesson11.bank.transaction.ClientTransactionResult;
 import skozik.lesson11.bank.transaction.IClientTransaction;
 import skozik.lesson11.bank.userinterface.Renderer;
 
-public class ClientThread implements Runnable {
+public class ClientTask implements Runnable {
     private String id;
     private IClientTransaction clientTransaction;
     private OfficeManager officeManager;
-    private Renderer renderer;
 
-    public ClientThread(String id, IClientTransaction clientTransaction,
-                        OfficeManager officeManager, Renderer renderer) {
+    public ClientTask(String id, IClientTransaction clientTransaction,
+                      OfficeManager officeManager) {
         this.id = id;
         this.clientTransaction = clientTransaction;
         this.officeManager = officeManager;
-        this.renderer = renderer;
     }
 
     @Override
     public void run() {
         try {
-            this.clientTransaction.dispatch(officeManager);
+            officeManager.produce(this.clientTransaction);
             ClientTransactionResult transactionResult = this.clientTransaction.getResult();
-            renderer.printMessage(this.id, this.clientTransaction.getType().name(), String.valueOf(transactionResult));
+            Renderer.printMessage(this.id, this.clientTransaction.getType().name(), String.valueOf(transactionResult));
         } catch (BankException e) {
-            renderer.printMessage(this.id, this.clientTransaction.getType().name(), e.getMessage());
+            Renderer.printMessage(this.id, this.clientTransaction.getType().name(), e.getMessage());
         }
     }
 }

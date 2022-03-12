@@ -6,6 +6,8 @@
 
 package skozik.lesson11.bank.dao;
 
+import static skozik.lesson11.bank.BankConstants.NOT_ENOUGH_MONEY_ON_ACCOUNT_EXCEPTION_FORMAT;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -34,7 +36,7 @@ public class AccountDao {
             CurrencyAmount currentAmount = validateAccountAndGet(account);
             validateCurrency(currentAmount, amount);
             if (currentAmount.getAmount().compareTo(amount.getAmount()) < 0) {
-                throw new BankException(ExceptionCode.BEM_0006);
+                throw new BankException(ExceptionCode.BEM_0006, String.format(NOT_ENOUGH_MONEY_ON_ACCOUNT_EXCEPTION_FORMAT, account, amount));
             }
             Treasury.releaseCash(amount);
             currentAmount.setAmount(currentAmount.getAmount().subtract(amount.getAmount()));
@@ -53,6 +55,10 @@ public class AccountDao {
         } finally {
             lock.unlock();
         }
+    }
+
+    public static CurrencyAmount getAccountValue(String account) {
+        return bankAccounts.get(account);
     }
 
     private static CurrencyAmount validateAccountAndGet(String account) throws BankException {

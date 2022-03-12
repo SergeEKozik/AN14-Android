@@ -11,7 +11,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import skozik.lesson11.bank.exception.BankException;
 import skozik.lesson11.bank.exception.ExceptionCode;
-import skozik.lesson11.bank.office.OfficeManager;
 
 public class AbstractTransaction implements IClientTransaction {
     private ReentrantLock locker = new ReentrantLock();
@@ -21,12 +20,6 @@ public class AbstractTransaction implements IClientTransaction {
 
     public AbstractTransaction(ClientTransactionType clientTransactionType) {
         this.clientTransactionType = clientTransactionType;
-    }
-
-    public void dispatch(OfficeManager officeManager) throws BankException {
-        if (!officeManager.produce(this)) {
-            throw new BankException(ExceptionCode.BEM_0001);
-        }
     }
 
     public ClientTransactionResult getResult() throws BankException {

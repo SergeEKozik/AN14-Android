@@ -12,6 +12,5 @@ import skozik.lesson11.bank.office.OfficeManager;
 public interface IClientTransaction {
     ClientTransactionResult getResult() throws BankException;
     void putResult(ClientTransactionResult result) throws BankException;
-    void dispatch(OfficeManager officeManager) throws BankException;
     ClientTransactionType getType();
 }

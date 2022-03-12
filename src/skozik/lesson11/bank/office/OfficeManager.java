@@ -18,12 +18,11 @@ import java.util.concurrent.TimeUnit;
 
 import skozik.lesson11.bank.exception.BankException;
 import skozik.lesson11.bank.exception.ExceptionCode;
-import skozik.lesson11.bank.transaction.AbstractTransaction;
 import skozik.lesson11.bank.transaction.IClientTransaction;
 import skozik.lesson11.bank.userinterface.Renderer;
 
 public class OfficeManager {
-    private SynchronousQueue<AbstractTransaction> transactionQueue;
+    private SynchronousQueue<IClientTransaction> transactionQueue;
     private int numberOfCashier;
     private ExecutorService cashierPool;
     private List<CashierTask> cashierTasks = new ArrayList<>();
@@ -43,9 +42,11 @@ public class OfficeManager {
         }
     }
 
-    public boolean produce(AbstractTransaction transaction) throws BankException {
+    public void produce(IClientTransaction transaction) throws BankException {
         try {
-            return transactionQueue.offer(transaction, 3, TimeUnit.SECONDS);
+            if (!transactionQueue.offer(transaction, 3, TimeUnit.SECONDS)) {
+                throw new BankException(ExceptionCode.BEM_0001);
+            }
         } catch (InterruptedException e) {
             throw new BankException(ExceptionCode.BEM_0001, e);
         }
